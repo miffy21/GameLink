@@ -1,0 +1,2 @@
+module WalkthroughsHelper
+end

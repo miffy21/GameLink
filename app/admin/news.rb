@@ -15,5 +15,4 @@ ActiveAdmin.register News do
   #   permitted
   # end
   permit_params :genre_id, :name, :main_content, :image_id
-
 end
