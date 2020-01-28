@@ -62,6 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activeadmin'
 gem 'devise'
+gem 'bootstrap', '~> 4.3'
+gem 'jquery-rails'
 
 group :production do
   gem 'mysql2'
