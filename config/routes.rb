@@ -1,21 +1,30 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
-  get 'favorites/create'
-  get 'favorites/destroy'
-  get 'comments/create'
-  get 'comments/destroy'
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'walkthroughs/index'
-  get 'walkthroughs/show'
-  get 'walkthroughs/show_chapter'
-  get 'news/index'
-  get 'news/show'
-  get 'contents/index'
-  get 'contents/about'
+
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  root 'contents#index'
+  get 'contents/about'
+
+  # userトップでのジャンル指定用
+  get 'contents/genre/:id' => 'contents#index', as: 'contents_genre'
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :contents
+  resources :reviews, only: [:index, :show]
+  resources :news, only: [:index, :show]
+  resources :walkthroughs, only: [:index, :show, :show_chapter]
+
+  resources :favorites, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 end
