@@ -64,6 +64,8 @@ gem 'activeadmin'
 gem 'devise'
 gem 'bootstrap', '~> 4.3'
 gem 'jquery-rails'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :production do
   gem 'mysql2'
