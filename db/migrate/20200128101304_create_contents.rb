@@ -5,7 +5,6 @@ class CreateContents < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :main_content
       t.text :sub_content
-      t.string :image_id
 
       t.timestamps
     end

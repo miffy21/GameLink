@@ -14,5 +14,6 @@ ActiveAdmin.register Content do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :genre_id, :name, :main_content, :sub_content,:image_id
+
+  permit_params :genre_id, :name, :main_content, :sub_content,:image
 end
