@@ -8,9 +8,10 @@
               <%= image_tag content.image_url.to_s, :style =>"width:100%;height:300px;object-fit:contain;" %>
               <title><%= content.name %></title><rect fill="#55595c" width="100%" height="100%" />
               <div class="card-body">
-                <p class="card-text"><%= content.name %></p>
+                <h4 class="card-text"><%= content.name %></h4>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
+                    <%= link_to content_path(content) do %>
                     <button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
                   </div>
                   <small class="text-muted"><%= content.genre.name %></small>
@@ -18,6 +19,7 @@
               </div>
             </div>
           </div>
+          <% end %>
         <% end %>
         </div>
       </div>

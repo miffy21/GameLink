@@ -5,6 +5,9 @@ class ContentsController < ApplicationController
   end
 
   def show
+  	@genres = Genre.all
+  	@content = Content.find(params[:id])
+    @comment = Comment.all
   end
 
   def about

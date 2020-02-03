@@ -15,5 +15,6 @@ ActiveAdmin.register Content do
   #   permitted
   # end
 
+
   permit_params :genre_id, :name, :main_content, :sub_content,:image
 end
