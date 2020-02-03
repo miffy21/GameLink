@@ -7,7 +7,8 @@ class ContentsController < ApplicationController
   def show
   	@genres = Genre.all
   	@content = Content.find(params[:id])
-    @comment = Comment.all
+  	@comments = Comment.all
+    @comment = Comment.new
   end
 
   def about

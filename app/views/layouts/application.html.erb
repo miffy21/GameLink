@@ -3,7 +3,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GameLink</title>
+  <%= csrf_meta_tag %>
+  <%= csp_meta_tag %>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'relode' %>
 </head>
 <body>
   <header>
@@ -18,7 +21,8 @@
             <h4 class="text-white">メニュー</h4>
             <ul class="list-unstyled">
           <% if current_user %>
-              <li><%= link_to "#{current_user.name}さん",user_path %></li>
+              <li><%= link_to "#{current_user.name}さん",user_path(current_user) %></li>
+              <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to '新規登録',new_user_registration_path %></li>
               <li><%= link_to 'ログイン',new_user_session_path %></li>

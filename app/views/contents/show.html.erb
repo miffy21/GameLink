@@ -23,7 +23,7 @@
 		<%= form_for @comment do |f| %>
 		<div class="row">
 			<div class="col-sm-12">
-				<%= f.hidden_field :content_id, :value => @user.id %>
+				<%= f.hidden_field :content_id, :value => @content.id %>
 				<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
 			</div>
 		</div>
@@ -31,10 +31,15 @@
 		<% end %>
 	<% else %>
 	<p class="">新規登録するとコメント機能が使えます！</p>
-	<p>今すぐ新規登録！</p>
-	<p>登録済みの方はこちら</p>
+	<p>今すぐ
+        <%= link_to new_user_registration_path do %>
+        <button type="button" class="btn btn-sm btn-outline-secondary">新規登録</button>
+        <% end %>
+    </p>
+	<p>登録済みの方は<%= link_to new_user_session_path do %>
+        <button type="button" class="btn btn-sm btn-outline-secondary">ログイン</button>
+        <% end %></p>
     <% end %>
 	</div>
 </main>
-
 
