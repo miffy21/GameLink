@@ -1,2 +1,70 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h3>マイページ</h3>
+            <% if @user.id == current_user.id %>
+            <ul class="list-inline" style="text-align: right;">
+                <li class="">
+                    <%= link_to "プロフィール編集", edit_user_path(@user), class: 'btn-sm btn-primary' %>
+                </li>
+                <li class="">
+                    <%= link_to "パスワード変更", edit_registration_path(@user), class: 'btn-sm btn-primary' %>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center;">
+                    <b>プロフィール</b>
+                </div>
+                <table class="table table-bordered table-content">
+                    <tbody>
+                        <tr>
+                            <th class="info">名前</th>
+                            <td>
+                                <%= "#{current_user.name}" %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="info">ニックネーム</th>
+                            <td>
+                                <%= "#{current_user.nickname}" %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="info">イメージ画像</th>
+                            <td>
+                            <%= image_tag @user.profile_image_id.to_s %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="info">好きなジャンル</th>
+                            <td>
+                                <%= "#{current_user.favorite_genre}" %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="info">好きなタイトル</th>
+                            <td>
+                                <%= "#{current_user.being_played}" %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="info">自己紹介</th>
+                            <td>
+                                <%= "#{current_user.profile}" %>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    
