@@ -39,7 +39,7 @@
                         <tr>
                             <th class="info">イメージ画像</th>
                             <td>
-                            <%= image_tag @user.profile_image_id.to_s %>
+                            <%= attachment_image_tag @user, :profile_image, :fill, 100,100,format:'jpg'%>
                             </td>
                         </tr>
                         <tr>

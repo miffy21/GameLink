@@ -67,7 +67,8 @@ gem 'jquery-rails'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'carrierwave'
-
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
 group :production do
   gem 'mysql2'
 end
