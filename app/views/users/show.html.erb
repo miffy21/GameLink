@@ -2,22 +2,6 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h3>マイページ</h3>
-            <% if @user.id == current_user.id %>
-            <ul class="list-inline" style="text-align: right;">
-                <li class="">
-                    <%= link_to "プロフィール編集", edit_user_path(@user), class: 'btn-sm btn-primary' %>
-                </li>
-                <li class="">
-                    <%= link_to "パスワード変更", edit_registration_path(@user), class: 'btn-sm btn-primary' %>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="text-align: center;">
                     <b>プロフィール</b>
@@ -60,11 +44,26 @@
                                 <%= "#{current_user.profile}" %>
                             </td>
                         </tr>
-                        <% end %>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+            <% if @user.id == current_user.id %>
+            <table class="table table-bordered table-content">
+                <tbody>
+                    <tr>
+                        <%= link_to "プロフィール編集", edit_user_path(@user), class: 'btn-lg btn-primary' %>
+                    </tr>
+                    <tr>
+                        <%= link_to "パスワード変更", edit_registration_path(@user), class: 'btn-lg btn-primary' %>
+                    </tr>
+                </tbody>
+            </table>
+            <% end %>
+        </div>
+    </div>
 </div>
-    

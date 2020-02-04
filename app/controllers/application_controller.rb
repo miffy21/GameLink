@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 	end
 	def set_genres
 		@genres = Genre.all
-	end
+        @user = current_user
+    end
 end
 
