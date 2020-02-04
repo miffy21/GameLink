@@ -1,2 +1,90 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h3 class="">プロフィール編集</h3>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<%= form_for(@user) do |f| %>
+			<div class="panel panel-primary">
+				<div class="panel-heading" style="text-align: center;">
+					<b>プロフィール編集フォーム</b>
+				</div>
+				<table class="table table-bordered table-content">
+					<tbody>
+						<div class="field">
+							<td>
+								<%= f.label :"名前" %>
+							</td>
+							<td>
+								<%= f.text_field :name, autofocus: true, class: "text-field-small" %>
+							</td>
+						</div>
+					</tr>
+					<tr>
+						<div class="field">
+							<td>
+								<%= f.label :"ニックネーム" %>
+							</td>
+							<td>
+								<%= f.text_field :nickname, class: "text-field-small" %>
+							</td>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<div class="field">
+						<td>
+							<%= f.label :"イメージ画像" %>
+						</td>
+						<td>
+							<%= f.attachment_field :profile_image, class: "text-field-lage" %>
+						</td>
+					</div>
+				</tr>
+				<div class="field">
+					<td>
+						<%= f.label :"好きなジャンル" %>
+					</td>
+					<td>
+						<%= f.text_field :favorite_genre, class: "text-field-lage" %>
+					</td>
+				</div>
+			</tr>
+			<tr>
+				<div class="field">
+					<td>
+						<%= f.label :"好きなタイトル" %>
+					</td>
+					<td>
+						<%= f.text_field :being_played, class: "text-field-lage" %>
+					</td>
+				</div>
+			</tr>
+			<tr>
+				<div class="field">
+					<td>
+						<%= f.label :"自己紹介" %>
+					</td>
+					<td>
+						<%= f.text_field :profile, class: "form-inline" %>
+					</td>
+				</div>
+			</tr>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div style="text-align: center">
+	<%= f.submit "編集内容を保存する", class: "btn-sm btn-primary" %>
+</div>
+<% end %>
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>

@@ -1,8 +1,9 @@
 <% @comments.each do |comment| %>
 <table class="table table-striped">
     <tr>
-        <td><%= comment.user.name %></td>
-        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= comment.user.nickname %></td>
+        <td><%= attachment_image_tag comment.user, :profile_image, :fill, 30,30,format:'jpg'%></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
         <td><%= comment.comment %></td>
         </td>
     </tr>
