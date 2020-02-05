@@ -6,7 +6,7 @@
 </td>
 <% else %>
 <td>
-	<%= link_to favorites_path(content), method: :post do %>
+	<%= link_to favorites_path(params: {content_id: content.id}), method: :post do %>
 	<i class="fa fa-heart-o" aria-hidden="true"></i>
 	<%= @content.favorites.count %> いいね！
 	<% end %>
