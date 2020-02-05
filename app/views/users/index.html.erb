@@ -1,40 +1,38 @@
-<div class="row">
-		<h2>会員一覧</h2>
-		<!--users一覧 -->
-		<table class="table">
-			<thead>
-				<tr>
-					<th>image</th>
-					<th>name</th>
-					<th colspan="3"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @users.each do |user| %>
-				<tr>
-					<td><%= attachment_image_tag user, :profile_image, :fill, 100,100,format:'jpg'%></td>
-					<td><%= user.name%></td>
-					<td>フォロー数<%= user.following.count %></td>
-					<td>フォロワー数<%= user.followers.count %></td>
-					<td><% unless current_user?(user) %>
-							<div id="follow_form">
-								<% if current_user.following?(user) %>
-									<%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-									html: { method: :delete },) do |f| %>
-										<%= f.submit "フォローを外す", class: "btn btn-danger" %>
-									<% end %>
-								<% else %>
-									<%= form_for(current_user.active_relationships.build) do |f| %>
-										<div><%= hidden_field_tag :followed_id, user.id %></div>
-										<%= f.submit "フォローする", class: "btn btn-primary" %>
-									<% end %>
-								<% end %>
-							</div>
-						<% end %></td>
-						<td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
-					</tr>
+<h2>会員一覧</h2>
+<table class="table table-hover">
+	<% @users.each do |user| %>
+	<tr>
+		<th><div class="rounded-circle">
+			<%= attachment_image_tag user, :profile_image, :fill, 140,140, fallback: "no_image.jpg", size:'140x140'%></div>
+		</th>
+		<th>
+			<h3 class="mb-0">
+					<a class="text-primary" href="#"><%= user.name%></a>
+				</h3>
+				<div class="mb-1 text-muted"><%= user.nickname %></div>
+				<p><%= user.profile %></p>
+		</th>
+		<th>
+			<p>好きなジャンル</p>
+            <p><%= user.favorite_genre %></p>
+            <p>好きなタイトル</p>
+            <p><%= user.being_played %></p>
+		</th>
+		<th>
+			<div id="follow_form">
+				<% if current_user.following?(user) %>
+				<%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+				html: { method: :delete },) do |f| %>
+				<%= f.submit "フォローを外す", class: "btn btn-danger" %>
 				<% end %>
-			</tbody>
-		</table>
-	</div>
-</div>
+				<% else %>
+				<%= form_for(current_user.active_relationships.build) do |f| %>
+				<div><%= hidden_field_tag :followed_id, user.id %></div>
+				<%= f.submit "フォローする", class: "btn btn-primary" %>
+				<% end %>
+				<% end %>
+			</div>
+		</th>
+    </tr>
+    <% end %>
+</table>

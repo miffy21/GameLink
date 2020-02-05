@@ -1,14 +1,14 @@
 class FavoritesController < ApplicationController
 	def create
-		comment = Coment.find(params[:comment_id])
-		favorite = current_user.favorites.new(comment_id: comment.id)
+		content = Content.find(params[:content_id])
+		favorite = current_user.favorites.new(content_id: content.id)
 		favorite.save
-		redirect_back(fallback_location: comments_path)
+		redirect_back(fallback_location: content_path)
 	end
 	def destroy
-		comment = Comment.find(params[:id])
-		favorite = current_user.favorites.find_by(comment_id: comment.id)
+		content = Content.find(params[:id])
+		favorite = current_user.favorites.find_by(content_id: content.id)
 		favorite.destroy
-		redirect_back(fallback_location: comments_path)
+		redirect_back(fallback_location: content_path)
 	end
 end

@@ -10,7 +10,7 @@
   </tr>
   <% @users.each do |user| %>
   <tr>
-    <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50) %>
+    <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50,fallback: "no_image.jpg",size:'50x50') %>
     </td>
     <td><%= user.name %></td>
     <td>フォロー数<%= user.following.count %></td>
@@ -33,7 +33,5 @@
       <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
     </tr>
     <% end %>
-  </table>
-  <% end %>
-</section>
-</aside>
+</table>
+<% end %>

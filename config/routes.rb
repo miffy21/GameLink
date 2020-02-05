@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contents
+  resources :contents, only: [:about,:index,:show]
   resources :favorites, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
