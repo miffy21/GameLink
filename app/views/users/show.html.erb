@@ -44,6 +44,18 @@
                                 <%= "#{current_user.profile}" %>
                             </td>
                         </tr>
+                        <tr>
+                            <th class="info">フォロー数</th>
+                            <td>
+                                <%= current_user.following.count %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="info">フォロワー数</th>
+                            <td>
+                                <%= current_user.followers.count %>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
