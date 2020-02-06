@@ -7,7 +7,7 @@
 		</th>
 		<th>
 			<h3 class="mb-0">
-					<a class="text-primary" href="#"><%= user.name%></a>
+					<a class="text-primary"><%= link_to "#{user.name}",user_path(user.id)%></a>
 				</h3>
 				<div class="mb-1 text-muted"><%= user.nickname %></div>
 				<p><%= user.profile %></p>
@@ -19,18 +19,32 @@
             <p><%= user.being_played %></p>
 		</th>
 		<th>
+			<p>フォロー</p>
+			<p>  <a href="<%= following_user_path(user.id) %>">
+				<strong id="following" class="stat">
+					<%= user.following.count %>
+				</strong></a></p>
+			<p>フォロワー</p>
+			<p> <a href="<%= followers_user_path(user.id) %>">
+				<strong id="followers" class="stat">
+					<%= user.followers.count %>
+				</strong></a></p>
+		</th>
+		<th>
+			<% unless current_user?(user) %>
 			<div id="follow_form">
 				<% if current_user.following?(user) %>
-				<%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-				html: { method: :delete },) do |f| %>
-				<%= f.submit "フォローを外す", class: "btn btn-danger" %>
-				<% end %>
+					<%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+					html: { method: :delete },) do |f| %>
+					<%= f.submit "フォロー中", class: "btn btn-primary", "data-confirm" => "フォローを解除しますか？" %>
+					<% end %>
 				<% else %>
-				<%= form_for(current_user.active_relationships.build) do |f| %>
-				<div><%= hidden_field_tag :followed_id, user.id %></div>
-				<%= f.submit "フォローする", class: "btn btn-primary" %>
+					<%= form_for(current_user.active_relationships.build) do |f| %>
+						<div><%= hidden_field_tag :followed_id, user.id %></div>
+					<%= f.submit "フォローする", class: "btn btn-secondary" %>
+					<% end %>
 				<% end %>
-				<% end %>
+			<% end %>
 			</div>
 		</th>
     </tr>

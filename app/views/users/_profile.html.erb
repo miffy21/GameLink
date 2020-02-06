@@ -1,19 +1,18 @@
 <table class="table">
-	<tr><%= attachment_image_tag(@user, :profile_image, :fill, 150, 150) %></tr>
-
+	<tr>ログイン中のユーザー情報</tr>
+	<tr><%= attachment_image_tag(current_user, :profile_image, :fill, 150, 150) %></tr>
 	<tr>
-		<th><%= @user.nickname %></th>
+		<th><%= current_user.name %></th>
 	</tr>
-
 	<tr>
-		<th><%= link_to "プロフィール",user_path(current_user) %></th>
+		<th>@<%= current_user.nickname %></th>
 	</tr>
 	<% @user ||= current_user %>
 	<tr>
 		<th>フォロー</th>
 		<th>  <a href="<%= following_user_path(@user) %>">
 			<strong id="following" class="stat">
-				<%= @user.following.count %>
+				<%= current_user.following.count %>
 			</strong></a>
 		</th>
 	</tr>
@@ -21,12 +20,15 @@
 		<th>フォロワー</th>
 		<th> <a href="<%= followers_user_path(@user) %>">
 			<strong id="followers" class="stat">
-				<%= @user.followers.count %>
+				<%= current_user.followers.count %>
 			</strong></a>
 		</th>
 	</tr>
+
+	<tr>
+		<th><%= link_to "プロフィール",user_path(current_user) %></th>
+	</tr>
 </table>
-<%= render 'users/follow_form', user: @user %>
 <% if @user == current_user %>
 <div class="row">
 	<%= link_to '',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>

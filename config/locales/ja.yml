@@ -205,3 +205,13 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+    attributes:
+      admin_user:
+        email: "メールアドレス"
+        current_sign_in_at: "ログイン状態"
+        sign_in_count: "ログイン回数"
+        created_at: "作成日"
+        genre: "ジャンル"
+        name: "タイトル"
+        created_at: "作成日"
+        updated_at: "更新日"

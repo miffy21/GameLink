@@ -11,49 +11,49 @@
                         <tr>
                             <th class="info">名前</th>
                             <td>
-                                <%= "#{current_user.name}" %>
+                                <%= "#{@user.name}" %>
                             </td>
                         </tr>
                         <tr>
                             <th class="info">ID</th>
                             <td>
-                                <%= "#{current_user.nickname}" %>
+                                <%= "#{@user.nickname}" %>
                             </td>
                         </tr>
                         <tr>
                             <th class="info">イメージ画像</th>
                             <td>
-                            <%= attachment_image_tag @user, :profile_image, :fill, 300,300,fallback: "no_image.jpg",size:'300x300'%>
+                                <%= attachment_image_tag @user, :profile_image, :fill, 300,300,fallback: "no_image.jpg",size:'300x300'%>
                             </td>
                         </tr>
                         <tr>
                             <th class="info">好きなジャンル</th>
                             <td>
-                                <%= "#{current_user.favorite_genre}" %>
+                                <%= "#{@user.favorite_genre}" %>
                             </td>
                         </tr>
                         <tr>
                             <th class="info">好きなタイトル</th>
                             <td>
-                                <%= "#{current_user.being_played}" %>
+                                <%= "#{@user.being_played}" %>
                             </td>
                         </tr>
                         <tr>
                             <th class="info">自己紹介</th>
                             <td>
-                                <%= "#{current_user.profile}" %>
+                                <%= "#{@user.profile}" %>
                             </td>
                         </tr>
                         <tr>
                             <th class="info">フォロー数</th>
                             <td>
-                                <%= current_user.following.count %>
+                                <%= @user.following.count %>
                             </td>
                         </tr>
                         <tr>
                             <th class="info">フォロワー数</th>
                             <td>
-                                <%= current_user.followers.count %>
+                                <%= @user.followers.count %>
                             </td>
                         </tr>
                     </tbody>
