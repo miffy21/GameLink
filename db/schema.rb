@@ -51,9 +51,13 @@ ActiveRecord::Schema.define(version: 2020_02_05_062443) do
     t.string "name"
     t.text "main_content"
     t.text "sub_content"
+    t.string "image"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
+    t.string "image5"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.index ["genre_id"], name: "index_contents_on_genre_id"
   end
 
