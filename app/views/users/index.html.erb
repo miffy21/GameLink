@@ -31,21 +31,7 @@
 				</strong></a></p>
 		</th>
 		<th>
-			<% unless current_user?(user) %>
-			<div id="follow_form">
-				<% if current_user.following?(user) %>
-					<%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-					html: { method: :delete },) do |f| %>
-					<%= f.submit "フォロー中", class: "btn btn-primary", "data-confirm" => "フォローを解除しますか？" %>
-					<% end %>
-				<% else %>
-					<%= form_for(current_user.active_relationships.build) do |f| %>
-						<div><%= hidden_field_tag :followed_id, user.id %></div>
-					<%= f.submit "フォローする", class: "btn btn-secondary" %>
-					<% end %>
-				<% end %>
-			<% end %>
-			</div>
+            <%= render 'users/follow_form', user: user %>
 		</th>
     </tr>
     <% end %>

@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 	def set_genres
 		@genres = Genre.all
         @user = current_user
+        @top_contents = Content.all.last(3)
     end
 end
 
