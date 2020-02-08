@@ -56,26 +56,29 @@
             <!-- スライドさせる画像の設定 -->
           <div class="carousel-inner">
             <div class="carousel-item active">
+              <%= link_to content_path(@top_contents[2]) do %>
               <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
                 <%= image_tag @top_contents[2].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
-
               <div class="container">
                 <div class="carousel-caption text-left" style="z-index: 500;">
                   <h3 style=""><%= @top_contents[2].name %></h3>
                 </div>
               </div>
+              <% end %>
             </div>
             <div class="carousel-item">
+              <%= link_to content_path(@top_contents[1]) do %>
               <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
               <%= image_tag @top_contents[1].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
               <div class="container">
                 <div class="carousel-caption"style="z-index: 500;">
-
                   <h3><%= @top_contents[1].name %></h3>
                 </div>
               </div>
+              <% end %>
             </div>
             <div class="carousel-item">
+              <%= link_to content_path(@top_contents[0]) do %>
               <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
               <%= image_tag @top_contents[0].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
               <div class="container">
@@ -83,6 +86,7 @@
                   <h3><%= @top_contents[0].name %></h3>
                 </div>
               </div>
+              <% end %>
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"style="z-index: 300;">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -106,24 +110,18 @@
               <div class="col-md-8">
                 <%= yield %>
               </div>
-              <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+              <nav class="col-md-2">
                 <div class="sidebar-sticky">
+                  <h6>人気記事</h6>
                   <% @all_ranks.each do |content| %>
-                  <%= image_tag content.image_url.to_s, :style =>"width:100%;height:50px;object-fit:cover;" %>
-                  <title><%= content.name %></title>
-                  <rect fill="#55595c" width="100%" height="100%">
-                    <div class="card-body">
-                      <h4 class="card-text"><%= content.name %></h4>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted"><%= content.genre.name %></small>
-                      </div>
+                    <div class="ranking-box" style="width: 100%; height: 150px; position:relative; padding-bottom: 17px;">
+                      <p class="ranking-genre" style="font-size: 50%; background-color: red; color: white; position: absolute;"><%= content.genre.name %></p>
+                      <%= link_to content_path(content) do %>
+                      <p class="ranking-name" style="font-size: 50%; background: rgba(100, 100, 100, .6); color: white; position: absolute; bottom: 0;"><%= content.name %></p>
+                      <%= image_tag content.image_url.to_s, :style =>"width: 100%; height: 100%; object-fit: cover;" %>
+                      <% end %>
                     </div>
                   <% end %>
-                  <ul class="nav flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#"></a>
-                    </li>
-                  </ul>
                 </div>
               </nav>
             <div class="row" style="color: #ffffff; background-color: #333333;">
