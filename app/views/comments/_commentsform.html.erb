@@ -1,4 +1,4 @@
-<% @comments.each do |comment| %>
+<% content.comments.each do |comment| %>
 <table class="table table-striped">
     <tr>
         <td><%= attachment_image_tag comment.user, :profile_image, :fill, 40,40,format:'jpg',fallback:"no_image.jpg",size:'40x40'%><%= link_to "#{comment.user.name}",user_path(comment.user_id)%></td>
