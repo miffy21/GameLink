@@ -6,12 +6,13 @@
                 <div class="panel-heading" style="text-align: center;">
                     <b>プロフィール</b>
                 </div>
-                <table class="table table-bordered table-content">
+                <table class="table table-bordered table-content" style="text-align: center;">
                     <tbody>
                         <tr>
                             <th class="info">名前</th>
                             <td>
-                                <%= "#{@user.name}" %><%= render 'users/follow_form', user: @user %>
+                                <%= "#{@user.name}" %>
+                                <div style="float: right;"><%= render 'users/follow_form', user: @user %></div>
                             </td>
                         </tr>
                         <tr>
