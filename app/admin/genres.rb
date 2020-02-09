@@ -15,4 +15,8 @@ ActiveAdmin.register Genre do
   #   permitted
   # end
   permit_params :name
+  index do
+    column :name
+  end
+
 end

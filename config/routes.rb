@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     get "sign_out", :to => "users/sessions#destroy"
   end
   root 'contents#index'
-  get 'contents/search', to:'contents#search'
   get 'contents/about'
   # userトップでのジャンル指定用
   get 'contents/genre/:id' => 'contents#index', as: 'contents_genre'
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contents, only: [:about,:index,:show] 
+  resources :contents, only: [:about,:index,:show]
   resources :favorites, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]

@@ -6,55 +6,44 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <%= csrf_meta_tag %>
   <%= csp_meta_tag %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'relode' %>
   <script src="https://kit.fontawesome.com/46860f55f1.js" crossorigin="anonymous"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'relode' %>
 </head>
 <body>
   <header>
-    <div class="collapse bg-dark" id="Navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-md-7 py-4">
-            <h4 class="text-white">ゲーム・総合情報サイト - GameLink</h4>
-            <p class="text-muted">気に入ったゲーム情報やニュースを配信。画像を交えて紹介しています。</p>
-          </div>
-          <div class="col-sm-4 offset-md-1 pt-4 pb-1">
-            <h4 class="text-white">メニュー</h4>
-            <ul class="list-unstyled">
-              <% if current_user %>
-                <li><%= link_to "#{current_user.name}さん",user_path(current_user) %></li>
-                <li><%= link_to "ユーザー一覧",users_path %></li>
-                <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete %></li>
-              <% else %>
-                <li><%= link_to '新規登録',new_user_registration_path %></li>
-                <li><%= link_to 'ログイン',new_user_session_path %></li>
-              <% end %>
-                <li><%= link_to 'アバウトページ',contents_about_path %></li>
-                <li>
-                  <form class="form-inline mt-2 mt-md-0">
-                    <!--  検索拡張機能  -->
-                    <%= form_tag contents_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
-                      <%= text_field_tag :search, '', class: "form-control mr-sm-2", :placeholder => "記事を検索" %>
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >検索</button>
-                    <% end %>
-                  </form>
-                </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
-      <div class="container d-flex justify-content-between">
-        <a href="/" class="navbar-brand d-flex align-items-center">
-          <strong>GameLink</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </div>
-    <main role="main">
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="ナビゲーションの切替">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/"sdata-toggle="tooltip" title="TOPに戻ります。">GameLink</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <% if current_user %>
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">メニュー</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "ユーザー一覧",users_path, class: "dropdown-item" %>
+          <%= link_to "プロフィール",user_path(current_user), class: "dropdown-item" %>
+          <%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div><!-- ./dropdown-menu -->
+        <% else %>
+          <%= link_to '新規登録',new_user_registration_path %></a>
+          <%= link_to 'ログイン',new_user_session_path %></a>
+        <% end %>
+      </li>
+    </ul>
+<!--      <form class="form-inline my-2 my-lg-0 ml-2">
+ -->          <!--  検索拡張機能  -->
+          <%= form_tag root_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
+          <%= text_field_tag :search, '', class: "form-control mr-sm-2", :placeholder => "記事を検索" %>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >検索</button>
+          <% end %>
+<!--         </form>
+ -->  </div><!-- /.navbar-collapse -->
+</div>
+</nav>
+       <main role="main">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- インジケータの設定 -->
         <ol class="carousel-indicators">
@@ -145,10 +134,18 @@
     </div>
   </div>
   <div class="row" style="height: 400px; color: #ffffff; background-color: #333333;">
-    <footer class="blog-footer">
+    <footer class="col-md-2">
       Copyright (C) GameLink All Rights Reserved.
       <div class="btn-group">
         <%= link_to "TOPに戻る", contents_path %>
+                <% if current_user %>
+          <a class="flex-sm-fill text-sm-center nav-link"><%= link_to "ユーザー一覧",users_path %></a>
+        <% else %>
+          <a class="flex-sm-fill text-sm-center nav-link"><%= link_to '新規登録',new_user_registration_path %></a>
+          <a class="flex-sm-fill text-sm-center nav-link"><%= link_to 'ログイン',new_user_session_path %></a>
+        <% end %>
+          <a class="flex-sm-fill text-sm-center nav-link"><%= link_to 'アバウトページ',contents_about_path %></a>
+        <div class="collapse navbar-collapse" id="navbarForm">
       </div>
     </footer>
   </div>
