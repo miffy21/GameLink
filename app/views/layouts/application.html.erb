@@ -15,133 +15,145 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-8 col-md-7 py-4">
-            <h4 class="text-white">ゲーム・総合攻略情報サイト - GameLink</h4>
+            <h4 class="text-white">ゲーム・総合情報サイト - GameLink</h4>
             <p class="text-muted">気に入ったゲーム情報やニュースを配信。画像を交えて紹介しています。</p>
           </div>
           <div class="col-sm-4 offset-md-1 pt-4 pb-1">
             <h4 class="text-white">メニュー</h4>
             <ul class="list-unstyled">
               <% if current_user %>
-              <li><%= link_to "#{current_user.name}さん",user_path(current_user) %></li>
-              <li><%= link_to "ユーザー一覧",users_path %></li>
-              <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to "#{current_user.name}さん",user_path(current_user) %></li>
+                <li><%= link_to "ユーザー一覧",users_path %></li>
+                <li><%= link_to 'ログアウト',destroy_user_session_path, method: :delete %></li>
               <% else %>
-              <li><%= link_to '新規登録',new_user_registration_path %></li>
-              <li><%= link_to 'ログイン',new_user_session_path %></li>
+                <li><%= link_to '新規登録',new_user_registration_path %></li>
+                <li><%= link_to 'ログイン',new_user_session_path %></li>
               <% end %>
-              <li><%= link_to 'アバウトページ',contents_about_path %></li>
-              <li><form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="検索..." aria-label="検索...">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-              </form><li>
-              </ul>
-            </div>
+                <li><%= link_to 'アバウトページ',contents_about_path %></li>
+                <li>
+                  <form class="form-inline mt-2 mt-md-0">
+                    <!--  検索拡張機能  -->
+                    <%= form_tag contents_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
+                      <%= text_field_tag :search, '', class: "form-control mr-sm-2", :placeholder => "記事を検索" %>
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >検索</button>
+                    <% end %>
+                  </form>
+                </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <a href="/" class="navbar-brand d-flex align-items-center"><strong>GameLink</strong></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="ナビゲーションの切替"><span class="navbar-toggler-icon"></span></button>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+          <strong>GameLink</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+    <main role="main">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- インジケータの設定 -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+          <!-- スライドさせる画像の設定 -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= link_to content_path(@top_contents[2]) do %>
+            <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
+            <%= image_tag @top_contents[2].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
+            <div class="container">
+              <div class="carousel-caption text-left" style="z-index: 500;">
+                <h3 style=""><%= @top_contents[2].name %></h3>
+                <p class="genre" style="font-size: 100%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><%= @top_contents[2].genre.name %></p>
+                <small class="text-muted" style="float: right;"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[2].created_at) %>前</small>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="carousel-item">
+            <%= link_to content_path(@top_contents[1]) do %>
+            <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
+            <%= image_tag @top_contents[1].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
+            <div class="container">
+              <div class="carousel-caption"style="z-index: 500;">
+                <h3><%= @top_contents[1].name %></h3>
+                <p class="genre" style="font-size: 100%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><%= @top_contents[1].genre.name %></p>
+                <small class="text-muted" style="float: right;"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[1].created_at) %>前</small>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="carousel-item">
+            <%= link_to content_path(@top_contents[0]) do %>
+            <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
+            <%= image_tag @top_contents[0].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
+            <div class="container">
+              <div class="carousel-caption text-right"style="z-index: 500;">
+                <h3><%= @top_contents[0].name %></h3>
+                <p class="genre" style="font-size: 100%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><%= @top_contents[0].genre.name %></p>
+                <small class="text-muted" style="float: right;"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[0].created_at) %>前</small>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"style="z-index: 300;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">前へ</span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"style="z-index: 300;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">次へ</span>
+          </a>
         </div>
       </div>
-      <main role="main">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- インジケータの設定 -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
-            <!-- スライドさせる画像の設定 -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <%= link_to content_path(@top_contents[2]) do %>
-              <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
-                <%= image_tag @top_contents[2].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
-              <div class="container">
-                <div class="carousel-caption text-left" style="z-index: 500;">
-                  <h3 style=""><%= @top_contents[2].name %></h3>
-                  <p class="genre" style="font-size: 100%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><%= @top_contents[2].genre.name %></p>
-                  <small class="text-muted" style="float: right;"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[2].created_at) %>前</small>
-                </div>
-              </div>
+    </main>
+  </header>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <% if current_user %>
+          <%= render 'users/profile', user: @user %>
+          <% else %>
+          <% end %>
+        </div>
+      </nav>
+      <div class="col-md-8">
+        <%= yield %>
+      </div>
+      <nav class="col-md-2">
+        <div class="sidebar-sticky">
+          <h6>人気記事</h6>
+          <% @all_ranks.each do |content| %>
+            <div class="ranking-box" style="width: 100%; height: 150px; position:relative; padding-bottom: 17px;">
+              <p class="ranking-favorite" style="font-size: 50%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><i class="fas fa-heart"></i><%= content.favorites.count %>いいね！</p>
+              <%= link_to content_path(content) do %>
+              <p class="ranking-name" style="font-size: 50%; background: rgba(100, 100, 100, .6); color: white; position: absolute; bottom: 0;"><%= content.name %></p>
+              <%= image_tag content.image_url.to_s, :style =>"width: 100%; height: 100%; object-fit: cover;" %>
               <% end %>
             </div>
-            <div class="carousel-item">
-              <%= link_to content_path(@top_contents[1]) do %>
-              <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
-              <%= image_tag @top_contents[1].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
-              <div class="container">
-                <div class="carousel-caption"style="z-index: 500;">
-                  <h3><%= @top_contents[1].name %></h3>
-                  <p class="genre" style="font-size: 100%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><%= @top_contents[1].genre.name %></p>
-                  <small class="text-muted" style="float: right;"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[1].created_at) %>前</small>
-                </div>
-              </div>
-              <% end %>
-            </div>
-            <div class="carousel-item">
-              <%= link_to content_path(@top_contents[0]) do %>
-              <div class="test" style="width: 100%; height: 400px; position: relative; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000); z-index: 200;"></div>
-              <%= image_tag @top_contents[0].image_url.to_s, :style =>"width: 100%; height: 400px; object-fit: cover; position: absolute; top: 0px; z-index:100;" %>
-              <div class="container">
-                <div class="carousel-caption text-right"style="z-index: 500;">
-                  <h3><%= @top_contents[0].name %></h3>
-                  <p class="genre" style="font-size: 100%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><%= @top_contents[0].genre.name %></p>
-                  <small class="text-muted" style="float: right;"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[0].created_at) %>前</small>
-                </div>
-              </div>
-              <% end %>
-            </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"style="z-index: 300;">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">前へ</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"style="z-index: 300;">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">次へ</span>
-            </a>
-          </header>
-          <div class="container-fluid">
-            <div class="row">
-              <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                  <% if current_user %>
-                  <%= render 'users/profile', user: @user %>
-                  <% else %>
-                  <% end %>
-                </div>
-              </nav>
-              <div class="col-md-8">
-                <%= yield %>
-              </div>
-              <nav class="col-md-2">
-                <div class="sidebar-sticky">
-                  <h6>人気記事</h6>
-                  <% @all_ranks.each do |content| %>
-                    <div class="ranking-box" style="width: 100%; height: 150px; position:relative; padding-bottom: 17px;">
-                      <p class="ranking-favorite" style="font-size: 50%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><i class="fas fa-heart"></i><%= content.favorites.count %>いいね！</p>
-                      <%= link_to content_path(content) do %>
-                      <p class="ranking-name" style="font-size: 50%; background: rgba(100, 100, 100, .6); color: white; position: absolute; bottom: 0;"><%= content.name %></p>
-                      <%= image_tag content.image_url.to_s, :style =>"width: 100%; height: 100%; object-fit: cover;" %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              </nav>
-            <div class="row" style="color: #ffffff; background-color: #333333;">
-              <footer class="blog-footer">
-                Copyright (C) GameLink All Rights Reserved.
-                <div class="btn-group">
-                  <%= link_to "TOPに戻る", contents_path %>
-                </div>
-              </footer>
-            </div>
-          </div>
-
-
-          <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-        </body>
-        </html>
+          <% end %>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row" style="height: 400px; color: #ffffff; background-color: #333333;">
+    <footer class="blog-footer">
+      Copyright (C) GameLink All Rights Reserved.
+      <div class="btn-group">
+        <%= link_to "TOPに戻る", contents_path %>
+      </div>
+    </footer>
+  </div>
+</body>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+</body>
+</html>

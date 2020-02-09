@@ -24,7 +24,7 @@
                         <tr>
                             <th class="info">イメージ画像</th>
                             <td>
-                                <%= attachment_image_tag @user, :profile_image, :fill, 300,300,fallback: "no_image.jpg",size:'300x300'%>
+                                <%= attachment_image_tag @user, :profile_image, :fill, 300,300,fallback: "no_image.jpg",size:'300x300',id: "profile-image"%>
                             </td>
                         </tr>
                         <tr>

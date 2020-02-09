@@ -3,7 +3,7 @@
 	<% @users.each do |user| %>
 	<tr>
 		<th><div class="rounded-circle">
-			<%= attachment_image_tag user, :profile_image, :fill, 140,140, fallback: "no_image.jpg", size:'140x140'%></div>
+			<%= attachment_image_tag user, :profile_image, :fill, 140,140, fallback: "no_image.jpg", size:'140x140',id: "profile-image"%></div>
 		</th>
 		<th>
 			<h3 class="mb-0">
