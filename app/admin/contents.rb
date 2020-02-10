@@ -17,4 +17,13 @@ ActiveAdmin.register Content do
 
 
   permit_params :genre_id, :name, :main_content, :sub_content,:image,:image2,:image3,:image4,:image5
+
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :created_at
+    column :updated_at
+    actions
+end
 end

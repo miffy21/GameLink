@@ -1,5 +1,10 @@
 <main>
-  <div class="content py-5 bg-light">
+  <div class="content bg-light">
+       <ul class="nav nav-pills nav-justified py-3">
+      <% @genres.each do |genre| %>
+      <li class="nav-item"><a class="nav-link" style="font-size: 100%; background: rgba(255, 0, 0, 1); color: white; "><%= genre.name %></a></li>
+       <% end %>
+    </ul>
     <div class="container">
       <div class="row">
         <% @contents.each do |content| %>

@@ -15,19 +15,17 @@ Genre.create!(
 		name: 'PS4',
 		},
 		{
-		name: 'ニンテンドースイッチ',
+		name: 'Switch',
 		},
 		{
-		name: 'ゲーム業界',
+		name: '3DS',
 		},
 		{
 		name: 'モバイル系',
 		},
 		{
-		name: '事件',
-		},
-		{
-		name: 'ニュース',
+		name: 'PCゲーム',
 		},
 		]
 		)
+

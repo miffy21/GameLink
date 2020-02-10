@@ -6,7 +6,6 @@
 }
 </style>
 <table class="table">
-	<tr></tr>
 	<tr><%= attachment_image_tag(current_user, :profile_image, :fill, 150, 150,id: "profile-image") %></tr>
 	<tr>
 		<th><%= current_user.name %></th>
@@ -35,7 +34,6 @@
 	<tr>
 		<th><%= link_to "プロフィール",user_path(current_user) %></th>
 	</tr>
-
 </table>
 <% if @user == current_user %>
 <div class="row">
