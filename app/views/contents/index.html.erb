@@ -2,7 +2,7 @@
   <div class="content bg-light">
        <ul class="nav nav-pills nav-justified py-3">
       <% @genres.each do |genre| %>
-      <li class="nav-item"><a class="nav-link" style="font-size: 100%; background: rgba(255, 0, 0, 1); color: white; "><%= genre.name %></a></li>
+      <li class="nav-item"><div class="nav-link"><%=link_to "#{genre.name}",contents_path(:genre => genre.id),class: 'btn btn-danger btn-block' %></div></li>
        <% end %>
     </ul>
     <div class="container">
@@ -11,7 +11,6 @@
           <%= link_to content_path(content) do %>
             <div class="col-md-12">
               <div class="card mb-4 shadow-sm">
-                <p class="ranking-favorite" style="font-size: 100%; background: rgba(255, 0, 0, .7); color: white; position: absolute;"><%= content.genre.name %></p>
                 <%= image_tag content.image_url.to_s, :style =>"width:100%;height:300px;object-fit:cover;" %>
                 <title><%= content.name %></title><rect fill="#55595c" width="100%" height="100%">
                 <div class="card-body">

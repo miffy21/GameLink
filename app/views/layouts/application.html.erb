@@ -33,14 +33,12 @@
         <% end %>
       </li>
     </ul>
-<!--      <form class="form-inline my-2 my-lg-0 ml-2">
- -->          <!--  検索拡張機能  -->
+<!--  検索拡張機能  -->
           <%= form_tag root_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
           <%= text_field_tag :search, '', class: "form-control mr-sm-2", :placeholder => "記事を検索" %>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >検索</button>
           <% end %>
-<!--         </form>
- -->  </div><!-- /.navbar-collapse -->
+   </div>
 </div>
 </nav>
        <main role="main">
@@ -117,7 +115,7 @@
       <div class="col-md-8">
         <%= yield %>
       </div>
-      <nav class="col-md-2">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
           <h6>人気記事</h6>
           <% @all_ranks.each do |content| %>
