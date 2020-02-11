@@ -16,7 +16,7 @@
 							<%= image_tag @content.image4_url.to_s, :style =>"width:100%;height:500px;object-fit:contain;" %>
 							<%= image_tag @content.image5_url.to_s, :style =>"width:100%;height:500px;object-fit:contain;" %>
 							<% if user_signed_in? %>
-							<div class="d-flex justify-content-between py-5 mx-auto">記事が面白かったら『いいね！』お願いします！→<%= render 'favorites/favoriteform',content: @content %>
+							<div id="favorite-<%= @content.id %>"><%= render 'favorites/favoriteform',content: @content %>
 								<% else %>
 								<p class="text-center">新規登録すると記事を評価するいいね機能が使えます！</p>
 								<% end %>
