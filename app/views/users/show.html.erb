@@ -76,7 +76,7 @@
         </div>
     </div>
     <div class="card-body shadow-sm">
-        <h3 class="card-title"><%= @user.name %>さんがいいねした記事一覧</h3>
+        <h5 class="card-title"><%= @user.name %>さんがいいねした記事一覧</h5>
         <div class="row">
             <% @favorite_content.each do |content| %>
             <%= link_to content_path(content) do %>

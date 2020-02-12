@@ -46,12 +46,8 @@
   max-width: 40rem;
 }
 
-
 .logo {
   height: 50px;
-}
-
-.obj-fit {
   object-fit: cover;
 }
 
@@ -112,7 +108,6 @@
   color:#ffd700;
 }
 
-
 .ranking-box {
   width: 100%;
   height: 150px;
@@ -167,12 +162,12 @@ footer {
 }
 
 .btn {
-    text-decoration: none !important;;
+  text-decoration: none !important;
   color: white !important;
 }
 
 .btn-sm {
-    text-decoration: none !important;;
+  text-decoration: none !important;
   color: white !important;
 }
 
@@ -197,5 +192,10 @@ footer {
 
 .profile-table tr th{
 text-align: center;
+font-size: 70%;
 }
 
+.send-btn {
+  float: right;
+  margin-bottom: 10px;
+}

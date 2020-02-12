@@ -2,9 +2,13 @@ class CommentsController < ApplicationController
 	def create
 		comment = Comment.new(comment_params)
 		comment.user_id = current_user.id
-		comment.save
-		flash[:notice] = "コメントを投稿しました！"
-		redirect_to content_path(comment.content_id)
+		if comment.save
+			flash[:notice] = "コメントを投稿しました！"
+			redirect_to content_path(comment.content_id)
+		else
+			flash[:notice] = "コメント投稿に失敗しました。コメント内容を確認して送信してください。"
+			redirect_to content_path(comment.content_id)
+		end
 	end
 
 	def destroy

@@ -37,7 +37,7 @@
 						<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "この記事についてコメント書く" %>
 					</div>
 				</div>
-				<%= f.submit "送信", class: "btn btn-primary pull-right" %>
+				<div class="send-btn"><%= f.submit "コメントを送信する", class: "btn btn-primary" %></div>
 			<% end %>
 	    <!-- ログインしていなければログイン、新規登録ボタンを表示 -->
 		<% else %>
