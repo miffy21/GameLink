@@ -1,12 +1,5 @@
-<style>
-	#profile-image {
-    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-    width:  150px;       /* ※縦横を同値に */
-    height: 150px;       /* ※縦横を同値に */
-}
-</style>
-<table class="table">
-	<tr><%= attachment_image_tag(current_user, :profile_image, :fill, 150, 150,id: "profile-image") %></tr>
+<table class="table text-center border-danger">
+	<tr><%= attachment_image_tag(current_user, :profile_image, :fill, 150, 150) %></tr>
 	<tr>
 		<th><%= current_user.name %></th>
 	</tr>

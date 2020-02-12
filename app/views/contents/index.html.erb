@@ -1,8 +1,11 @@
 <main>
+  <!-- ジャンルソートボタン -->
   <div class="content bg-light">
-       <ul class="nav nav-pills nav-justified py-3">
+    <ul class="nav nav-pills nav-justified py-1">
       <% @genres.each do |genre| %>
-      <li class="nav-item"><div class="nav-link"><%=link_to "#{genre.name}",contents_path(:genre => genre.id),class: 'btn btn-danger btn-block' %></div></li>
+      <li class="nav-item">
+        <div class="nav-link"><%=link_to "#{genre.name}",contents_path(:genre => genre.id),class: 'btn btn-danger btn-block' %></div>
+      </li>
        <% end %>
     </ul>
     <div class="container">
@@ -11,10 +14,10 @@
           <%= link_to content_path(content) do %>
             <div class="col-md-12">
               <div class="card mb-4 shadow-sm">
-                <%= image_tag content.image_url.to_s, :style =>"width:100%;height:300px;object-fit:cover;" %>
-                <title><%= content.name %></title><rect fill="#55595c" width="100%" height="100%">
+                <%= image_tag content.image_url.to_s, class: "index-img" %>
+                  <p class="index-genre-tag"><%= content.genre.name %></p>
                 <div class="card-body">
-                  <h4 class="card-text"><%= content.name %></h4>
+                  <h3 class="card-text"><%= content.name %></h3>
           <% end %>
                   <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted"><i class="far fa-clock"></i><%= time_ago_in_words(content.created_at) %>前</small>
@@ -25,6 +28,7 @@
             </div>
         <% end %>
       </div>
+      <%= paginate @contents %>
     </div>
   </div>
 </main>

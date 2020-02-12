@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  PER = 10
-
   def index
-     @users = User.all
+     @users = User.all.page(params[:page]).per(6)
   end
 
   def show
     @user = User.find(params[:id])
+    @favorite_content = Content.joins(:favorites).where(favorites: { user: @user })
   end
 
   def edit

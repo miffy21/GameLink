@@ -1,11 +1,7 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+    <div class="mt-5">
+        <div class="col-md-12">
             <div class="panel panel-primary">
-                <div class="panel-heading" style="text-align: center;">
-                    <b>プロフィール</b>
-                </div>
                 <table class="table table-bordered table-content" style="text-align: center;">
                     <tbody>
                         <tr>
@@ -24,7 +20,7 @@
                         <tr>
                             <th class="info">イメージ画像</th>
                             <td>
-                                <%= attachment_image_tag @user, :profile_image, :fill, 300,300,fallback: "no_image.jpg",size:'300x300',id: "profile-image"%>
+                                <%= attachment_image_tag @user, :profile_image, :fill, 150,150,fallback: "no_image.jpg",size:'150x150',id: "profile-image"%>
                             </td>
                         </tr>
                         <tr>
@@ -63,20 +59,44 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
         <div class="col-md-8">
             <% if @user.id == current_user.id %>
             <table class="table table-bordered table-content">
                 <tbody>
                     <tr>
-                        <%= link_to "プロフィール編集", edit_user_path(@user), class: 'btn-lg btn-primary' %>
+                        <%= link_to "プロフィール編集", edit_user_path(@user), class: 'btn btn-primary btn-block' %>
                     </tr>
                     <tr>
-                        <%= link_to "パスワード変更", edit_registration_path(@user), class: 'btn-lg btn-primary' %>
+                        <%= link_to "パスワード変更", edit_registration_path(@user), class: 'btn btn-primary btn-block' %>
                     </tr>
                 </tbody>
             </table>
             <% end %>
         </div>
+    </div>
+    <div class="card-body shadow-sm">
+        <h3 class="card-title"><%= @user.name %>さんがいいねした記事一覧</h3>
+        <div class="row">
+        
+                <% @favorite_content.each do |content| %>
+                    <%= link_to content_path(content) do %>
+                        <div class="col-md-4">
+                            <div class="card h-10 mb-4 shadow-sm">
+                                <%= image_tag content.image_url.to_s, class: "favo-content-img" %>
+                                <p class="fav-genre-tag"><%= content.genre.name %></p>
+                                <div class="card-body">
+                                    <h3 class="card-text favo-content-name"><%= content.name %></h3>
+                    <% end %>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted"><i class="far fa-clock"></i><%= time_ago_in_words(content.created_at) %>前</small>
+                                        <small class="text-muted" style="position: absolute; right: 40; bottom:10;"><i class="far fa-comment"></i>コメント数:<%= content.comments.count %>件</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <% end %>
+            </div>
+    
     </div>
 </div>

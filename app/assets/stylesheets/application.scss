@@ -10,11 +10,15 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+`*= require_self
  *= require_tree .
- *= require_self
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.font-bold {
+ font-weight: bold;
+}
 
 .jumbotron {
   padding-top: 3rem;
@@ -22,6 +26,7 @@
   margin-bottom: 0;
   background-color: #fff;
 }
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: 6rem;
@@ -41,6 +46,146 @@
   max-width: 40rem;
 }
 
-.blog-footer p:last-child {
-  margin-bottom: 0;
+
+.logo {
+  height: 50px;
 }
+
+.obj-fit {
+  object-fit: cover;
+}
+
+.carousel-gradation {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0,0,0,0.2) 60%, #000);
+  z-index: 200;
+}
+
+.top-contents {
+  color: white;
+  font-weight: bold;
+}
+
+.genre-tag {
+  font-size: 120%;
+  background: rgba(255, 0, 0, .7);
+  color: white;
+  position: absolute;
+}
+
+.top-content-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  position: absolute;
+  top: 0px;
+  z-index:100;
+}
+
+.fa-chevron-circle-down {
+  font-size: 30px;
+  position: absolute;
+  left: 80;
+  bottom: 3;
+}
+
+.carousel-caption {
+  z-index: 500;
+}
+
+.top-content-time-ago {
+  float: right;
+}
+
+
+.carousel-control-prev {
+  z-index: 300;
+}
+
+.carousel-control-next {
+  z-index: 300;
+}
+
+.fa-crown {
+  color:#ffd700;
+}
+
+
+.ranking-box {
+  width: 100%;
+  height: 150px;
+  position:relative;
+  padding-bottom: 17px;
+}
+
+.ranking-favorite {
+  font-size: 50%;
+  background: rgba(255, 0, 0, .7);
+  color: white;
+  position: absolute;
+}
+
+.ranking-name {
+  font-size: 50%;
+  background: rgba(100, 100, 100, .6);
+  color: white;
+  position: absolute; 
+  bottom: 7;
+}
+
+.ranking-img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+}
+
+.index-img {
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+.index-genre-tag {
+  font-size: 110%;
+  background: rgba(255, 0, 0, .7); 
+  color: white; 
+  position: absolute; 
+  top :290; 
+  left: 10;
+}
+
+footer {
+  text-align: center;
+  color: #ffffff; 
+  background-color: #333333;
+}
+
+.btn {
+    text-decoration: none !important;;
+  color: white !important;
+}
+
+
+.favo-content-img {
+    width:100%;
+  height:100px;
+  object-fit:cover;
+}
+
+.favo-content-name {
+  font-size: 50%;
+}
+
+.fav-genre-tag {
+  font-size: 110%;
+  background: rgba(255, 0, 0, .7); 
+  color: white; 
+  position: absolute; 
+  top :90; 
+  left: 10;
+}
+
+
+
