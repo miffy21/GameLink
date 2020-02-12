@@ -11,46 +11,46 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'relode' %>
 </head>
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
-      <div class="container">
-        <a class="navbar-brand" href="/"sdata-toggle="tooltip" title="TOPに戻ります。"><img class="pbj-fit logo" src="<%= asset_path "logo.png" %>"></a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-              <% if current_user %>
-                <a class="nav-link " role="button" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false"><i class="fas fa-chevron-circle-down"></i></a>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+        <div class="container">
+          <a class="navbar-brand" href="/"sdata-toggle="tooltip" title="TOPに戻ります。"><img class="pbj-fit logo" src="<%= asset_path "logo.png" %>"></a>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <% if current_user %>
+                <a class="nav-link " role="button" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">メニュー<i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <%= link_to "ユーザー一覧",users_path, class: "dropdown-item" %>
                   <%= link_to "プロフィール",user_path(current_user), class: "dropdown-item" %>
                   <%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 </div>
-　　　　　　　　　<% else %>
-                  <%= link_to '新規登録',new_user_registration_path %>
-                  <%= link_to 'ログイン',new_user_session_path %>
-              <% end %>
-            </li>
-          </ul>
-          <!--  記事の検索機能  -->
-          <%= form_tag root_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
+                <% else %>
+                <%= link_to '新規登録',new_user_registration_path %>
+                <%= link_to 'ログイン',new_user_session_path %>
+                <% end %>
+              </li>
+            </ul>
+            <!--  記事の検索機能  -->
+            <%= form_tag root_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
             <%= text_field_tag :search, '', class: "form-control mr-sm-2", :placeholder => "記事を検索" %>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >検索</button>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    </nav>
-    <main role="main">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- インジケータの設定 -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <!-- スライドさせる画像の設定 -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= link_to content_path(@top_contents[2]) do %>
+      </nav>
+      <main role="main">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- インジケータの設定 -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <!-- スライドさせる画像の設定 -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= link_to content_path(@top_contents[2]) do %>
               <div class="carousel-gradation"></div>
               <%= image_tag @top_contents[2].image_url.to_s, class: "top-content-img" %>
               <div class="container">
@@ -60,10 +60,10 @@
                   <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[2].created_at) %>前</small>
                 </div>
               </div>
-            <% end %>
-          </div>
-          <div class="carousel-item">
-            <%= link_to content_path(@top_contents[1]) do %>
+              <% end %>
+            </div>
+            <div class="carousel-item">
+              <%= link_to content_path(@top_contents[1]) do %>
               <div class="carousel-gradation"></div>
               <%= image_tag @top_contents[1].image_url.to_s, class: "top-content-img" %>
               <div class="container">
@@ -73,9 +73,9 @@
                   <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[1].created_at) %>前</small>
                 </div>
               </div>
-            <% end %>
-          </div>
-          <div class="carousel-item">
+              <% end %>
+            </div>
+            <div class="carousel-item">
               <%= link_to content_path(@top_contents[0]) do %>
               <div class="carousel-gradation"></div>
               <%= image_tag @top_contents[0].image_url.to_s, class: "top-content-img" %>
@@ -86,58 +86,55 @@
                   <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[0].created_at) %>前</small>
                 </div>
               </div>
+              <% end %>
+            </div>
+            <!-- スライダーのコントロール -->
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">前へ</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">次へ</span>
+            </a>
+          </div>
+        </div>
+      </main>
+    </header>
+    <!-- サイドバー -->
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar text-center card">
+          <div class="sidebar-sticky mt-3 ">
+            <!-- ログイン中のユーザー情報 -->
+            <% if current_user %>
+            <%= render 'users/profile', user: @user %>
+            <% else %>
             <% end %>
           </div>
-          <!-- スライダーのコントロール -->
-          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">前へ</span>
-          </a>
-          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">次へ</span>
-          </a>
-        </div>
-      </div>
-    </main>
-  </header>
-  <!-- サイドバー -->
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar text-center">
-        <div class="sidebar-sticky mt-3 ">
-          <!-- ログイン中のユーザー情報 -->
-          <% if current_user %>
-          <%= render 'users/profile', user: @user %>
-          <% else %>
-          <% end %>
-        </div>
           <!-- アマゾン広告 -->
-<div class="amazlet-box" style="margin-bottom:0px;">
-<div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07HHZTD8C" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/31C4TLDlhAL._SL160_.jpg" alt="PlayStation 4 Pro ジェット・ブラック 1TB (CUH-7200BB01)" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-name" style="margin-bottom:10px;line-height:120%"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07HHZTD8C" name="amazletlink" target="_blank">PlayStation 4 Pro ジェット・ブラック 1TB (CUH-7200BB01)</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with <a href="http://www.amazlet.com/" title="amazlet" target="_blank">amazlet</a> at 20.02.11</div></div><div class="amazlet-detail">ソニー・インタラクティブエンタテインメント (2018-09-18)<br />売り上げランキング: 89<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07HHZTD8C" name="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
-<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07WXL5YPW/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41uat%2Bd45gL._SL160_.jpg" alt="Nintendo Switch 本体 (ニンテンドースイッチ) Joy-Con(L) ネオンブルー/(R) ネオンレッド(バッテリー持続時間が長くなったモデル)" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-name" style="margin-bottom:10px;line-height:120%"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07WXL5YPW/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">Nintendo Switch 本体 (ニンテンドースイッチ) Joy-Con(L) ネオンブルー/(R) ネオンレッド(バッテリー持続時間が長くなったモデル)</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with <a href="http://www.amazlet.com/" title="amazlet" target="_blank">amazlet</a> at 20.02.11</div></div><div class="amazlet-detail">任天堂 (2019-08-30)<br />売り上げランキング: 35<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07WXL5YPW/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
-<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07X779ZK5/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41i-GD4F2oL._SL160_.jpg" alt="Nintendo Switch Lite ターコイズ" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-name" style="margin-bottom:10px;line-height:120%"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07X779ZK5/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">Nintendo Switch Lite ターコイズ</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with <a href="http://www.amazlet.com/" title="amazlet" target="_blank">amazlet</a> at 20.02.11</div></div><div class="amazlet-detail">任天堂 (2019-09-20)<br />売り上げランキング: 9<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07X779ZK5/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
-<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07SFY368H/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41Jsnq0xa3L._SL160_.jpg" alt="ファイナルファンタジーVII リメイク - PS4" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-name" style="margin-bottom:10px;line-height:120%"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07SFY368H/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">ファイナルファンタジーVII リメイク - PS4</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with <a href="http://www.amazlet.com/" title="amazlet" target="_blank">amazlet</a> at 20.02.11</div></div><div class="amazlet-detail">スクウェア・エニックス (2020-04-10)<br />売り上げランキング: 5<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07SFY368H/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
-<div class="amazlet-box" style="margin-bottom:0px;"><div class="amazlet-image" style="float:left;margin:0px 12px 1px 0px;"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07ND146ZL/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41Fu4oHAffL._SL160_.jpg" alt="ファイナルファンタジーXIV: 漆黒のヴィランズ - Windows" style="border: none;" /></a></div><div class="amazlet-info" style="line-height:120%; margin-bottom: 10px"><div class="amazlet-name" style="margin-bottom:10px;line-height:120%"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07ND146ZL/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">ファイナルファンタジーXIV: 漆黒のヴィランズ - Windows</a><div class="amazlet-powered-date" style="font-size:80%;margin-top:5px;line-height:120%">posted with <a href="http://www.amazlet.com/" title="amazlet" target="_blank">amazlet</a> at 20.02.11</div></div><div class="amazlet-detail">スクウェア・エニックス (2019-07-02)<br />売り上げランキング: 605<br /></div><div class="amazlet-sub-info" style="float: left;"><div class="amazlet-link" style="margin-top: 5px"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B07ND146ZL/amazletjp-22/ref=nosim/" name="amazletlink" target="_blank">Amazon.co.jpで詳細を見る</a></div></div></div><div class="amazlet-footer" style="clear: left"></div></div>
+          <%= render 'layouts/amazon' %>
+        　</nav>
 
-    　</nav>
+        <div class="col-md-8">
+         <%- flash.each do |name, msg| -%>
+         <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+         <%- end -%>
+         <%= yield %>
+       </div>
 
-      <div class="col-md-8">
-        <%= yield %>
-      </div>
-
-      <!--  いいね数に応じたランキング表示　-->
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+       <!--  いいね数に応じたランキング表示　-->
+       <nav class="col-md-2 d-none d-md-block bg-light sidebar card">
         <div class="sidebar-sticky">
           <h6 class= "pt-2 text-center"><i class="fas fa-crown"></i>人気記事<i class="fas fa-crown"></i></h6>
           <% @all_ranks.each do |content| %>
-            <div class="ranking-box">
-              <p class="ranking-favorite"><i class="fas fa-heart"></i><%= content.favorites.count %>いいね！</p>
-              <%= link_to content_path(content) do %>
-              <p class="ranking-name"><%= content.name %></p>
-              <div class="shadow-sm"><%= image_tag content.image_url.to_s, class: "ranking-img" %></div>
-              <% end %>
-            </div>
+          <div class="ranking-box">
+            <p class="ranking-favorite"><i class="fas fa-heart"></i><%= content.favorites.count %>いいね！</p>
+            <%= link_to content_path(content) do %>
+            <p class="ranking-name"><%= content.name %></p>
+            <div class="shadow-sm"><%= image_tag content.image_url.to_s, class: "ranking-img" %></div>
+            <% end %>
+          </div>
           <% end %>
         </div>
       </nav>
@@ -145,10 +142,12 @@
   </div>
 
   <footer>
-      <i class="far fa-copyright"></i> GameLink.com
+    <a href="/" sdata-toggle="tooltip" title="TOPに戻ります。">
+      <img class="pbj-fit footer-logo" src="<%= asset_path "footer-logo.png" %>">
+    </a>
   </footer>
-</body>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
 </body>
 </html>

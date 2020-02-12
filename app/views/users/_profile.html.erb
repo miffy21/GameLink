@@ -1,32 +1,34 @@
-<table class="table text-center border-danger">
-	<tr><%= attachment_image_tag(current_user, :profile_image, :fill, 150, 150) %></tr>
-	<tr>
-		<th><%= current_user.name %></th>
-	</tr>
-	<tr>
-		<th>@<%= current_user.nickname %></th>
-	</tr>
-	<% @user ||= current_user %>
-	<tr>
-		<th>フォロー</th>
-		<th>  <a href="<%= following_user_path(@user) %>">
-			<strong id="following" class="stat">
-				<%= current_user.following.count %>
-			</strong></a>
-		</th>
-	</tr>
-	<tr>
-		<th>フォロワー</th>
-		<th> <a href="<%= followers_user_path(@user) %>">
-			<strong id="followers" class="stat">
-				<%= current_user.followers.count %>
-			</strong></a>
-		</th>
-	</tr>
+<table class="table profile-table card border-radius border-danger">
+	<tbody class="mx-auto">
+		<tr>
+			<th><%= attachment_image_tag(current_user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", size:'100x100',id: "profile-image") %></th>
+		</tr>
+		<tr>
+			<th><%= current_user.name %></th>
+		</tr>
+		<tr>
+			<th>@<%= current_user.nickname %></th>
+		</tr>
+		<% @user ||= current_user %>
+		<tr>
+			<th>フォロー<a href="<%= following_user_path(@user) %>">
+				<strong id="following" class="stat">
+					<%= current_user.following.count %>
+				</strong></a>
+			</th>
+		</tr>
+		<tr>
+			<th>フォロワー<a href="<%= followers_user_path(@user) %>">
+				<strong id="followers" class="stat">
+					<%= current_user.followers.count %>
+				</strong></a>
+			</th>
+		</tr>
 
-	<tr>
-		<th><%= link_to "プロフィール",user_path(current_user) %></th>
-	</tr>
+		<tr>
+			<th><%= link_to "プロフィール",user_path(current_user) %></th>
+		</tr>
+	</tbody>
 </table>
 <% if @user == current_user %>
 <div class="row">

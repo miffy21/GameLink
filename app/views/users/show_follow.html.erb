@@ -3,16 +3,16 @@
 	<% @users.each do |user| %>
 	<tr>
 		<th><div class="rounded-circle">
-			<%= attachment_image_tag user, :profile_image, :fill, 140,140, fallback: "no_image.jpg", size:'140x140',id: "profile-image"%></div>
+			<%= attachment_image_tag user, :profile_image, :fill, 100,100, fallback: "no_image.jpg", size:'100x100',id: "profile-image"%></div>
 		</th>
-		<th>
-			<h3 class="mb-0">
+			<th>
+				<h4 class="mb-0">
 					<a class="text-primary"><%= link_to "#{user.name}",user_path(user.id)%></a>
-				</h3>
-				<div class="mb-1 text-muted"><%= user.nickname %></div>
-				<p><%= user.profile %></p>
-		</th>
-		<th>
+				</h4>
+				<div class="mb-2 text-muted"><%= user.nickname %></div>
+				<div class="text-wrap"style="width: 15rem;"><%= user.profile %></div>
+			</th>
+		<th class="pb-0">
 			<p>好きなジャンル</p>
             <p><%= user.favorite_genre %></p>
             <p>好きなタイトル</p>

@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+         validates :email, presence: true, length: { in: 2..20 }
+         validates :name, presence: true
+
   has_many :comments, dependent: :destroy
   attachment :profile_image
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

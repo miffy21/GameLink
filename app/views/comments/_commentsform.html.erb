@@ -3,10 +3,12 @@
     <tr>
         <td><%= attachment_image_tag comment.user, :profile_image, :fill, 40,40,format:'jpg',fallback:"no_image.jpg",size:'40x40'%><%= link_to "#{comment.user.name}",user_path(comment.user_id)%></td>
         <td><small class="text-muted"><i class="far fa-clock"></i><%= time_ago_in_words(comment.created_at) %>前</small></td>
-        <td><%= comment.comment %></td>
+        <td><div class="text-wrap"style="width: 15rem;"><%= comment.comment %></div></td>
       <% if user_signed_in? %>
         <td><% if comment.user_id == current_user.id %>
-            <%= link_to "コメントを削除", comment_path(comment), class:"btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+	            <%= link_to comment_path(comment), method: :delete, "data-confirm" => "コメントを削除しますか？" do %>
+	            <i class="fas fa-trash-alt"></i>
+	            <% end %>
             <% end %>
         </td>
       <% else %>

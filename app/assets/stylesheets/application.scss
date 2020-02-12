@@ -159,7 +159,11 @@
 footer {
   text-align: center;
   color: #ffffff; 
-  background-color: #333333;
+  background-color: #343a40;
+}
+
+.footer-logo {
+  height: 30px;
 }
 
 .btn {
@@ -167,6 +171,10 @@ footer {
   color: white !important;
 }
 
+.btn-sm {
+    text-decoration: none !important;;
+  color: white !important;
+}
 
 .favo-content-img {
     width:100%;
@@ -187,5 +195,7 @@ footer {
   left: 10;
 }
 
-
+.profile-table tr th{
+text-align: center;
+}
 

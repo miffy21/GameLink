@@ -78,25 +78,23 @@
     <div class="card-body shadow-sm">
         <h3 class="card-title"><%= @user.name %>さんがいいねした記事一覧</h3>
         <div class="row">
-        
-                <% @favorite_content.each do |content| %>
-                    <%= link_to content_path(content) do %>
-                        <div class="col-md-4">
-                            <div class="card h-10 mb-4 shadow-sm">
-                                <%= image_tag content.image_url.to_s, class: "favo-content-img" %>
-                                <p class="fav-genre-tag"><%= content.genre.name %></p>
-                                <div class="card-body">
-                                    <h3 class="card-text favo-content-name"><%= content.name %></h3>
-                    <% end %>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted"><i class="far fa-clock"></i><%= time_ago_in_words(content.created_at) %>前</small>
-                                        <small class="text-muted" style="position: absolute; right: 40; bottom:10;"><i class="far fa-comment"></i>コメント数:<%= content.comments.count %>件</small>
-                                    </div>
-                                </div>
-                            </div>
+            <% @favorite_content.each do |content| %>
+            <%= link_to content_path(content) do %>
+            <div class="col-md-4">
+                <div class="card h-10 mb-4 shadow-sm">
+                    <%= image_tag content.image_url.to_s, class: "favo-content-img" %>
+                    <p class="fav-genre-tag"><%= content.genre.name %></p>
+                    <div class="card-body">
+                        <h3 class="card-text favo-content-name"><%= content.name %></h3>
+                        <% end %>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><i class="far fa-clock"></i><%= time_ago_in_words(content.created_at) %>前</small>
+                            <small class="text-muted" style="position: absolute; right: 40; bottom:10;"><i class="far fa-comment"></i>コメント数:<%= content.comments.count %>件</small>
                         </div>
-                <% end %>
+                    </div>
+                </div>
             </div>
-    
+        <% end %>
+        </div>
     </div>
 </div>
