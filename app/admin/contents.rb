@@ -16,7 +16,7 @@ ActiveAdmin.register Content do
   # end
 
 
-  permit_params :genre_id, :name, :main_content, :sub_content,:image,:image2,:image3,:image4,:image5
+  permit_params :genre_id, :name, :main_content, :sub_content,:image,:image2, :image3, :image4, :image5, :copyright1, :copyright2, :copyright3, :copyright4, :copyright5
 
   index do
     selectable_column

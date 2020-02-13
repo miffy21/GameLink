@@ -16,6 +16,14 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+table {
+  font-size: 50%;
+}
+
+h4 {
+  text-align: center;
+}
+
 .font-bold {
  font-weight: bold;
 }

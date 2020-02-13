@@ -56,6 +56,11 @@ ActiveRecord::Schema.define(version: 2020_02_05_062443) do
     t.string "image3"
     t.string "image4"
     t.string "image5"
+    t.string "copyright1"
+    t.string "copyright2"
+    t.string "copyright3"
+    t.string "copyright4"
+    t.string "copyright5"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_contents_on_genre_id"

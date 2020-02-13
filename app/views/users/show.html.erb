@@ -1,8 +1,9 @@
 <div class="container">
-    <div class="mt-5">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <table class="table table-bordered table-content" style="text-align: center;">
+    <div class="row m-2">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 card p-3 shadow-sm">
+                    <h4>会員情報</h4>
+                <table class="table table-bordered table-content">
                     <tbody>
                         <tr>
                             <th class="info">名前</th>
@@ -55,28 +56,27 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
             <% if @user.id == current_user.id %>
             <table class="table table-bordered table-content">
                 <tbody>
                     <tr>
-                        <%= link_to "プロフィール編集", edit_user_path(@user), class: 'btn btn-primary btn-block' %>
+                        <%= link_to edit_user_path(@user) do %>
+                        <i class="fas fa-user-edit m-1">プロフィール編集</i>
+                        <% end %>
                     </tr>
                     <tr>
-                        <%= link_to "パスワード変更", edit_registration_path(@user), class: 'btn btn-primary btn-block' %>
+                        <%= link_to edit_registration_path(@user) do%>
+                        <i class="fas fa-user-cog m-1">パスワード変更・退会</i>
+                        <% end %>
                     </tr>
                 </tbody>
             </table>
             <% end %>
         </div>
     </div>
+</div>
     <div class="card-body shadow-sm">
-        <h5 class="card-title"><%= @user.name %>さんがいいねした記事一覧</h5>
+        <h5 class="card-title"><%= @user.name %>さんが「<i class="fas fa-heart"></i>いいね！」した記事一覧</h5>
         <div class="row">
             <% @favorite_content.each do |content| %>
             <%= link_to content_path(content) do %>
@@ -96,5 +96,4 @@
             </div>
         <% end %>
         </div>
-    </div>
 </div>

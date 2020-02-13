@@ -1,50 +1,47 @@
 <div class="container">
-	<div class="mt-5 row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading text-center">
-					<h2>会員一覧</h2>
-					<table class="table table-hover">
-						<% @users.each do |user| %>
-						<tr>
-							<th class= "pt-3"><div class="rounded-circle">
-								<%= attachment_image_tag user, :profile_image, :fill, 100,100, fallback: "no_image.jpg", size:'100x100',id: "profile-image"%></div>
-							</th>
-							<th>
-								<h4 class="mb-0">
-									<a class="text-primary"><%= link_to "#{user.name}",user_path(user.id)%></a>
-								</h4>
-								<div class="mb-2 text-muted"><%= user.nickname %></div>
-								<div class="text-wrap"style="width: 15rem;"><%= user.profile %></div>
-							</th>
-							<th class="pb-0">
-								<p>好きなジャンル</p>
-								<p><%= user.favorite_genre %></p>
-								<p>好きなタイトル</p>
-								<p><%= user.being_played %></p>
-							</th>
-							<th>
-								<p>フォロー</p>
-								<p><a href="<%= following_user_path(user.id) %>">
-								   <strong id="following" class="stat">
-										<%= user.following.count %>
-									</strong></a></p>
-									<p>フォロワー</p>
-									<p> <a href="<%= followers_user_path(user.id) %>">
-										<strong id="followers" class="stat">
-											<%= user.followers.count %>
-										</strong></a></p>
-									</th>
-									<th class= "pt-5">
-										<%= render 'users/follow_form', user: user %>
-									</th>
-								</tr>
-								<% end %>
-					</table>
-				</div>
-			</div>
+	<div class="row p-2">
+		<div class="col-md-12 card p-3 shadow-sm">
+			<h4>会員一覧</h4>
+			<table class="table table-bordered table-content">
+				<% @users.each do |user| %>
+				<tr>
+					<th class= "pt-3">
+						<div class="rounded-circle">
+						<%= attachment_image_tag user, :profile_image, :fill, 100,100, fallback: "no_image.jpg", size:'100x100',id: "profile-image"%></div>
+					</th>
+					<th>
+						<h4 class="mb-0">
+							<a class="text-primary"><%= link_to "#{user.name}",user_path(user.id)%></a>
+						</h4>
+						<div class="mb-2 text-muted"><%= user.nickname %></div>
+						<div class="text-wrap"style="width: 15rem;"><%= user.profile %></div>
+					</th>
+					<th class="pb-0">
+						<p>好きなジャンル</p>
+						<p><%= user.favorite_genre %></p>
+						<p>好きなタイトル</p>
+						<p><%= user.being_played %></p>
+					</th>
+					<th>
+						<p>フォロー</p>
+						<p><a href="<%= following_user_path(user.id) %>">
+							<strong id="following" class="stat">
+								<%= user.following.count %>
+							</strong></a></p>
+						<p>フォロワー</p>
+						<p><a href="<%= followers_user_path(user.id) %>">
+							<strong id="followers" class="stat">
+								<%= user.followers.count %>
+							</strong></a></p>
+					</th>
+					<th class= "pt-5">
+						<%= render 'users/follow_form', user: user %>
+					</th>
+				</tr>
+				<% end %>
+			</table>
 		</div>
 	</div>
 </div>
-		<%= paginate @users %>
+<%= paginate @users %>
 

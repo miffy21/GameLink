@@ -1,12 +1,9 @@
-<div class="container">
+<div class="container user-edit">
 	<div class="mt-5 row">
 		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-8 card p-3 shadow-sm">
 		    <%= form_for(@user) do |f| %>
-			<div class="panel panel-primary">
-				<div class="panel-heading" style="text-align: center;">
-					<h4>プロフィール編集フォーム</h4>
-				</div>
+					<h4 class="text-center">プロフィール編集フォーム</h4>
 				<table class="table table-bordered table-content">
 					<tbody>
 						<tr>
@@ -71,11 +68,8 @@
 						</tr>
 		            </tbody>
 	            </table>
+	             <%= f.submit "編集内容を保存する", class: 'btn btn-primary btn-block' %>
             </div>
-            <div style="text-align: center">
-	        <%= f.submit "編集内容を保存する", class: 'btn btn-primary btn-block' %>
-            </div>
-            <% end %>
-        </div>
-    </div>
+        <% end %>
+	</div>
 </div>

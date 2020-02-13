@@ -1,16 +1,18 @@
-<% if @content.favorited_by?(current_user) %>
-<td>
-	<h3 class="p-5">
-	記事が面白かったら『いいね！』お願いします！→<%= link_to favorite_path(content), method: :delete, remote: true do %>
-	<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= @content.favorites.count %> いいね！</h3>
+<div class="row">
+	<% if @content.favorited_by?(current_user) %>
+	<td>
+		<p class="col-sm-12 card-body text-center">
+		記事が面白かったら『いいね！』お願いします！→<%= link_to favorite_path(content), method: :delete, remote: true do %>
+		<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= @content.favorites.count %> いいね！</p>
+		<% end %>
+	</td>
+	<% else %>
+	<td>
+		<p class="col-sm-12 card-body text-center">
+		記事が面白かったら『いいね！』お願いします！→<%= link_to favorites_path(params: {content_id: content.id}), method: :post, remote: true do %>
+		<i class="fa fa-heart-o" aria-hidden="true"></i>
+		<%= @content.favorites.count %> いいね！</p>
+		<% end %>
+	</td>
 	<% end %>
-</td>
-<% else %>
-<td>
-	<h3 class="p-5">
-	記事が面白かったら『いいね！』お願いします！→<%= link_to favorites_path(params: {content_id: content.id}), method: :post, remote: true do %>
-	<i class="fa fa-heart-o" aria-hidden="true"></i>
-	<%= @content.favorites.count %> いいね！</h3>
-	<% end %>
-</td>
-<% end %>
+</div>
