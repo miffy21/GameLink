@@ -70,6 +70,7 @@ gem 'carrierwave'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari'
+gem 'faker'
 group :production do
   gem 'mysql2'
 end
