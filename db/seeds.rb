@@ -36,11 +36,11 @@ Content.create!(
 			name:'『モンスターハンターワールド：アイスボーン』狩王決定戦 2019-2020。2020年3月21日（土）決勝大会クエスト情報を公開！',
 			main_content:'「モンスターハンターフェスタ’19-’20」の目玉コンテンツであり、最速ハンターの頂点“狩王”を目指して全国のハンター達が己の腕を競い合う「モンスターハンターワールド：アイスボーン　狩王決定戦 2019-2020」決勝大会が2020年3月21日（土）に開催！　その決勝大会のクエストの詳細情報を公開！',
 			sub_content:'名称：『モンスターハンターワールド：アイスボーン』狩王決定戦 2019-2020 日時： 東日本大会：2019年11月24日（日）※開催済み 西日本大会：2020年1月19日（日）※開催済み 決勝大会／当日最終予選：2020年3月21日（土）都内某所にて開催',
-			image:open("#{Rails.root}/db/seed_image/seed-mh1.jpg"),
-			image2:open("#{Rails.root}/db/seed_image/seed-mh2.png"),
-			image3:open("#{Rails.root}/db/seed_image/seed-mh3.png"),
-			image4:open("#{Rails.root}/db/seed_image/seed-mh4.png"),
-		    image5:open("#{Rails.root}/db/seed_image/seed-mh5.png"),
+			image:open("#{Rails.root}/public/seed_image/seed-mh1.jpg"),
+			image2:open("#{Rails.root}/public/seed_image/seed-mh2.png"),
+			image3:open("#{Rails.root}/public/seed_image/seed-mh3.png"),
+			image4:open("#{Rails.root}/public/seed_image/seed-mh4.png"),
+		    image5:open("#{Rails.root}/public/seed_image/seed-mh5.png"),
             copyright1:'http://www.capcom.co.jp',
             copyright2:'http://www.capcom.co.jp',
             copyright3:'http://www.capcom.co.jp',
@@ -53,11 +53,11 @@ Content.create!(
 			name:'『バイオハザード RE:3』新ステージ“カジノ”と“廃遊園地”が公開！ 新たなマスターマインドも紹介',
 			main_content:'新たなステージ、新たなマスターマインドが出現！　『バイオハザード レジスタンス』',
 			sub_content:'2020年4月3日の発売が迫る『バイオハザード RE:3』。 　今報ではキャンペーンと併せて収録されている“非対称対戦サバイバルホラー”。 　意図せず拉致されてきたサバイバーたち。 　彼らをどのようなステージ、そしてどのようなマスターマインドが待ち受けるのだろうか？',
-			image:open("#{Rails.root}/db/seed_image/seed-bhz1.jpg"),
-			image2:open("#{Rails.root}/db/seed_image/seed-bhz2.jpg"),
-			image3:open("#{Rails.root}/db/seed_image/seed-bhz3.jpg"),
-			image4:open("#{Rails.root}/db/seed_image/seed-bhz4.jpg"),
-		    image5:open("#{Rails.root}/db/seed_image/seed-bhz5.jpg"),
+			image:open("#{Rails.root}/public/seed_image/seed-bhz1.jpg"),
+			image2:open("#{Rails.root}/public/seed_image/seed-bhz2.jpg"),
+			image3:open("#{Rails.root}/public/seed_image/seed-bhz3.jpg"),
+			image4:open("#{Rails.root}/public/seed_image/seed-bhz4.jpg"),
+		    image5:open("#{Rails.root}/public/seed_image/seed-bhz5.jpg"),
             copyright1:'http://www.capcom.co.jp',
             copyright2:'http://www.capcom.co.jp',
             copyright3:'http://www.capcom.co.jp',
@@ -70,11 +70,11 @@ Content.create!(
 			name:'「ロックマンゼロ」「ロックマンゼクス」シリーズ全6作品に加え、新要素を搭載して最新ハードに登場！',
 			main_content:'「ロックマンX」シリーズに連なる、紅き英雄「ゼロ」の伝説 「ロックマン」シリーズ・「ロックマンX」シリーズの続編として、 青き英雄「エックス」と共に「シグマ」と戦った人気キャラクター「ゼロ」の自らが信じる者のために戦う物語がここにある！',
 			sub_content:'「ロックマンX」シリーズから数百年後、伝説のレプリロイド「ゼロ」が活躍する「ロックマン ゼロ」シリーズの全4作品を収録。重厚なストーリーと、ゼットセイバーで敵を両断する爽快感とスピーディーなアクションが魅力だ。 発売日 ： 2020年2月27日（木）発売予定 対応ハード ： PlayStation®4 / Nintendo Switch™ / Xbox One / PC(Steam) ジャンル ： アクション',
-			image:open("#{Rails.root}/db/seed_image/seed-rmz1.jpg"),
-			image2:open("#{Rails.root}/db/seed_image/seed-rmz2.jpg"),
-			image3:open("#{Rails.root}/db/seed_image/seed-rmz3.png"),
-			image4:open("#{Rails.root}/db/seed_image/seed-rmz4.jpg"),
-		    image5:open("#{Rails.root}/db/seed_image/seed-rmz5.png"),
+			image:open("#{Rails.root}/public/seed_image/seed-rmz1.jpg"),
+			image2:open("#{Rails.root}/public/seed_image/seed-rmz2.jpg"),
+			image3:open("#{Rails.root}/public/seed_image/seed-rmz3.png"),
+			image4:open("#{Rails.root}/public/seed_image/seed-rmz4.jpg"),
+		    image5:open("#{Rails.root}/public/seed_image/seed-rmz5.png"),
             copyright1:'http://www.capcom.co.jp',
             copyright2:'http://www.capcom.co.jp',
             copyright3:'http://www.capcom.co.jp',
@@ -131,9 +131,10 @@ User.all.each do |user|
 
 
 content_count = Content.count
+user_count = User.count
 50.times do |n|
 	content_id = random.rand(1..content_count)
-	user_id = random.rand(1..User.count)
+	user_id = random.rand(1..user_count)
 	comment = ''
 		case random.rand(1..10)
 			when 1 then
