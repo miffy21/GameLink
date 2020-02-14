@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Faker::Config.locale = :ja
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', confirmed_at: Time.now, password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 Genre.create!(
 	[
