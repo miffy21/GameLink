@@ -53,8 +53,8 @@ Content.create!(
 			name:'『バイオハザード RE:3』新ステージ“カジノ”と“廃遊園地”が公開！ 新たなマスターマインドも紹介',
 			main_content:'新たなステージ、新たなマスターマインドが出現！　『バイオハザード レジスタンス』',
 			sub_content:'2020年4月3日の発売が迫る『バイオハザード RE:3』。 　今報ではキャンペーンと併せて収録されている“非対称対戦サバイバルホラー”。 　意図せず拉致されてきたサバイバーたち。 　彼らをどのようなステージ、そしてどのようなマスターマインドが待ち受けるのだろうか？',
-			image:open("#{Rails.root}/public/seed_image/seed-bhz1.jpg"),
-			image2:open("#{Rails.root}/public/seed_image/seed-bhz2.jpg"),
+			image:open("#{Rails.root}/public/seed_image/seed-bhz2.jpg"),
+			image2:open("#{Rails.root}/public/seed_image/seed-bhz1.jpg"),
 			image3:open("#{Rails.root}/public/seed_image/seed-bhz3.jpg"),
 			image4:open("#{Rails.root}/public/seed_image/seed-bhz4.jpg"),
 		    image5:open("#{Rails.root}/public/seed_image/seed-bhz5.jpg"),
@@ -85,85 +85,6 @@ Content.create!(
 	]
 	)
 
-
-user_count = User.count
-random = Random.new
-
-100.times do |n|
-  password = "123456"
-  User.create!(email: Faker::Internet.email,
-  	           name: Faker::Name.name,
-               password: password,
-               password_confirmation: password,
-               )
-end
-
-User.all.each do |user|
-	favorite_target = []
-		user_count.times do |i|
-    		favorite_target << random.rand(1..user_count)
- 		end
- 	favorite_target.uniq
- 	favorite_target.each do |target|
- 		Relationship.create!(
- 		content_id: target,
- 		user_id: user.id
-    	)
- 	end
- end
-
-
-User.all.each do |user|
-	follow_target = []
-		user_count.times do |i|
-    		follow_target << random.rand(1..user_count)
- 		end
-    follow_target.delete(user.id)
-
-    follow_target.uniq
- 	follow_target.each do |target|
- 		Relationship.create!(
- 		follower_id: target,
- 		followed_id: user.id
-    	)
- 	end
- end
-
-
-content_count = Content.count
-user_count = User.count
-50.times do |n|
-	content_id = random.rand(1..content_count)
-	user_id = random.rand(1..user_count)
-	comment = ''
-		case random.rand(1..10)
-			when 1 then
-				comment = '一応買う。'
-			when 2 then
-				comment = '普通に楽しみの巻'
-			when 3 then
-				comment = '予約しました!'
-			when 4 then
-				comment = 'なるほどなー'
-			when 5 then
-				comment = 'ストーリー知ってるし、PS5で完全版出るまでスルーだわ!'
-			when 6 then
-				comment = '買います!'
-			when 7 then
-				comment = '知らなかった〜'
-			when 8 then
-				comment = '課金要素あるんかこれ'
-			when 9 then
-				comment = '面白そう!'
-			when 10 then
-				comment = 'ふーん、一応買うかな!'
-		end
-	Comment.create!(
-		user_id: user_id,
-		content_id: content_id,
-		comment: comment
-		)
-end
 
 
 
