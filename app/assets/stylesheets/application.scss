@@ -35,13 +35,6 @@ h4 {
   background-color: #fff;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
 .jumbotron p:last-child {
   margin-bottom: 0;
 }
@@ -57,6 +50,10 @@ h4 {
 .logo {
   height: 50px;
   object-fit: cover;
+}
+
+.dropdown-item {
+  text-decoration: none !important;
 }
 
 .carousel-gradation {
@@ -206,4 +203,11 @@ font-size: 70%;
 .send-btn {
   float: right;
   margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
