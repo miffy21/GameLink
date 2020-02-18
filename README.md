@@ -6,7 +6,7 @@
  
 # 概要
  
-![Uploading README_image.png…]() 
+<img width="1440" alt="README_image" src="https://user-images.githubusercontent.com/56035129/74737255-ceb92180-5297-11ea-9944-61fef9729847.png">
 
 ゲームの情報まとめアプリです。
 管理者が記事を投稿。
@@ -16,9 +16,8 @@
  
 ## 機能
 
-共通機能
-┗記事投稿、削除、編集機能（gem 'Activ admin'）
-┗画像投稿機能 (gem 'refile','carrierwave')
+共通機能:記事投稿、削除、編集機能（gem 'Activ admin'）
+画像投稿機能 (gem 'refile','carrierwave')
 ┗ログイン機能 (gem 'devise')
 ┗ナビ表示分岐機能 (if 条件分岐)
 ┗記事の検索機能 (メソッド定義　search)
@@ -39,7 +38,7 @@ TOPページ　(root contents)
 記事詳細　（contents）
 ┗記事の詳細表示
 ┗いいね機能（非同期）
-┗コメント投稿機能 
+┗コメント投稿機能
 ┗コメント削除機能
 
 ユーザー　（users)
