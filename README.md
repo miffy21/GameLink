@@ -3,6 +3,7 @@
 # アプリケーション名
 
 ゲーム総合情報サイト - GAME LINK[ゲームリンク]
+URL: http://gamelink.fun/
  
 # 概要
  
