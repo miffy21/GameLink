@@ -17,37 +17,37 @@ URL: http://gamelink.fun/
 ## 機能
 
 共通機能
-┗記事投稿、削除、編集機能（gem 'Activ admin'）
-┗画像投稿機能 (gem 'refile','carrierwave')
-┗ログイン機能 (gem 'devise')
-┗ナビ表示分岐機能 (if 条件分岐)
-┗記事の検索機能 (メソッド定義　search)
-┗バリデーション機能 (if 条件分岐)
-┗エラーメッセージ表示機能 (flash)
-┗最新記事のスライダー機能 (bootstrap)
-┗いいね数に基づいたランキング機能
-┗Amazonアソシエイト機能
+1. 記事投稿、削除、編集機能（gem 'Activ admin'）
+2. 画像投稿機能 (gem 'refile','carrierwave')
+3. ログイン機能 (gem 'devise')
+4. ナビ表示分岐機能 (if 条件分岐)
+5. 記事の検索機能 (メソッド定義　search)
+6. バリデーション機能 (if 条件分岐)
+7. エラーメッセージ表示機能 (flash)
+8. 最新記事のスライダー機能 (bootstrap)
+9. いいね数に基づいたランキング機能
+10. Amazonアソシエイト機能
 
 TOPページ　(root contents)
-┗記事一覧表示 (contents/index)
-┗ジャンル機能(テーブルあり)
-┗ジャンルソート機能(メソッド定義　search)
-┗投稿時間"〇〇時間前"表示機能 (time_ago_in_words)
-┗コメント投稿数表示機能 (.count)
-┗ページネーション機能 (gem 'kaminari')
+1. 記事一覧表示 (contents/index)
+2. ジャンル機能(テーブルあり)
+3. ジャンルソート機能(メソッド定義　search)
+4. 投稿時間"〇〇時間前"表示機能 (time_ago_in_words)
+5. コメント投稿数表示機能 (.count)
+6. ページネーション機能 (gem 'kaminari')
 
 記事詳細　（contents）
-┗記事の詳細表示
-┗いいね機能（非同期）
-┗コメント投稿機能
-┗コメント削除機能
+1. 記事の詳細表示
+2. いいね機能（非同期）
+3. コメント投稿機能
+4. コメント削除機能
 
 ユーザー　（users)
-┗ユーザー一覧機能（users/index）
-┗フォロー機能 (users/following followers)
-┗いいねした記事一覧表示機能（joinメソッド　結合条件にマッチするものを表示）
-┗プロフィール編集機能 (gem 'devise')
-┗退会機能 (gem 'devise','refile')
+1. ユーザー一覧機能（users/index）
+2. フォロー機能 (users/following followers)
+3. いいねした記事一覧表示機能（joinメソッド　結合条件にマッチするものを表示）
+4. プロフィール編集機能 (gem 'devise')
+5. 退会機能 (gem 'devise','refile')
  
 ## 使い方
  
