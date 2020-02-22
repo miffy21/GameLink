@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-     @users = User.all.page(params[:page]).per(6)
+    @users = User.all.page(params[:page]).per(6)
   end
 
   def show
@@ -36,7 +36,9 @@ class UsersController < ApplicationController
     @users = @user.followers
     render 'show_follow'
   end
+
   private
+
   def user_params
     params.require(:user).permit(:name, :image, :nickname, :profile_image, :favorite_genre, :being_played, :profile)
   end
@@ -46,4 +48,5 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+
 end

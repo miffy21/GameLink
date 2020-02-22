@@ -25,5 +25,5 @@ ActiveAdmin.register Content do
     column :created_at
     column :updated_at
     actions
-end
+  end
 end
