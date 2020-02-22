@@ -45,9 +45,10 @@ TOPページ　(root contents)
 ユーザー　（users)
 1. ユーザー一覧機能（users/index）
 2. フォロー機能 (users/following followers)
-3. いいねした記事一覧表示機能（joinメソッド　結合条件にマッチするものを表示）
-4. プロフィール編集機能 (gem 'devise')
-5. 退会機能 (gem 'devise','refile')
+3. フォロー、フォロワー一覧（render　分岐）
+4. いいねした記事一覧表示機能（joinメソッド　結合条件にマッチするものを表示）
+5. プロフィール編集機能 (gem 'devise')
+6. 退会機能 (gem 'devise','refile')
  
 ## 使い方
  
