@@ -14,122 +14,123 @@
 </head>
 
 <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
-        <div class="container">
-          <a class="navbar-brand" href="/"sdata-toggle="tooltip" title="TOPに戻ります。"><img class="logo" src="<%= asset_path "logo.png" %>"></a>
-          <a class="text-muted">ゲーム総合情報サイト - GAME LINK[ゲームリンク]</a>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <% if current_user %>
-                <a class="nav-link " role="button" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">メニュー<i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <%= link_to "ユーザー一覧",users_path, class: "dropdown-item" %>
-                  <%= link_to "プロフィール",user_path(current_user), class: "dropdown-item" %>
-                  <%= link_to 'ログアウト',destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                </div>
-                <% else %>
-                <%= link_to '新規登録',new_user_registration_path %>
-                <%= link_to 'ログイン',new_user_session_path %>
-                <% end %>
-              </li>
-            </ul>
-            <!--  記事の検索機能  -->
-            <%= form_tag root_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
-            <%= text_field_tag :search, '', class: "form-control mr-sm-2", :placeholder => "記事を検索" %>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >検索</button>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+      <div class="container">
+        <a class="navbar-brand" href="/"sdata-toggle="tooltip" title="TOPに戻ります。"><img class="logo" src="<%= asset_path "logo.png" %>"></a>
+        <a class="text-muted">ゲーム総合情報サイト - GAME LINK[ゲームリンク]</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <% if current_user %>
+              <a class="nav-link " role="button" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">メニュー<i class="fas fa-caret-down"></i></a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to "ユーザー一覧", users_path, class: "dropdown-item" %>
+                <%= link_to "プロフィール", user_path(current_user), class: "dropdown-item" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+              <% else %>
+              <%= link_to '新規登録', new_user_registration_path, class: "fas fa-user-plus p-1 login-menu" %>
+              <%= link_to 'ログイン', new_user_session_path, class: "fas fa-sign-in-alt p-1 login-menu" %>
+              <% end %>
+            </li>
+          </ul>
+          <!--  記事の検索機能  -->
+          <%= form_tag root_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
+          <%= text_field_tag :search, '', class: "form-control mr-sm-2", :placeholder => "記事を検索" %>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >検索</button>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <main role="main">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- インジケータの設定 -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- スライドさせる画像の設定 -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= link_to content_path(@top_contents[2]) do %>
+            <div class="carousel-gradation"></div>
+            <%= image_tag @top_contents[2].image_url.to_s, class: "top-content-img" %>
+            <div class="container">
+              <div class="carousel-caption text-left">
+                <h2  class="top-contents"><%= @top_contents[2].name %></h2>
+                <p class="genre-tag"><%= @top_contents[2].genre.name %></p>
+                <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[2].created_at) %>前</small>
+              </div>
+            </div>
             <% end %>
           </div>
+          <div class="carousel-item">
+            <%= link_to content_path(@top_contents[1]) do %>
+            <div class="carousel-gradation"></div>
+            <%= image_tag @top_contents[1].image_url.to_s, class: "top-content-img" %>
+            <div class="container">
+              <div class="carousel-caption">
+                <h2 class="top-contents"><%= @top_contents[1].name %></h2>
+                <p class="genre-tag"><%= @top_contents[1].genre.name %></p>
+                <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[1].created_at) %>前</small>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="carousel-item">
+            <%= link_to content_path(@top_contents[0]) do %>
+            <div class="carousel-gradation"></div>
+            <%= image_tag @top_contents[0].image_url.to_s, class: "top-content-img" %>
+            <div class="container">
+              <div class="carousel-caption text-right">
+                <h2 class="top-contents"><%= @top_contents[0].name %></h2>
+                <p class="genre-tag"><%= @top_contents[0].genre.name %></p>
+                <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[0].created_at) %>前</small>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <!-- スライダーのコントロール -->
+          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">前へ</span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">次へ</span>
+          </a>
         </div>
+      </div>
+    </main>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- サイドバー左 -->
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar text-center card">
+        <div class="sidebar-sticky mt-3 ">
+          <!-- ログイン中のユーザー情報 -->
+          <% if current_user %>
+          <%= render 'users/profile', user: @user %>
+          <% else %>
+          <% end %>
+        </div>
+        <!-- アマゾン広告 -->
+        <%= render 'layouts/amazon' %>
       </nav>
-      <main role="main">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- インジケータの設定 -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
-          <!-- スライドさせる画像の設定 -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <%= link_to content_path(@top_contents[2]) do %>
-              <div class="carousel-gradation"></div>
-              <%= image_tag @top_contents[2].image_url.to_s, class: "top-content-img" %>
-              <div class="container">
-                <div class="carousel-caption text-left">
-                  <h2  class="top-contents"><%= @top_contents[2].name %></h2>
-                  <p class="genre-tag"><%= @top_contents[2].genre.name %></p>
-                  <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[2].created_at) %>前</small>
-                </div>
-              </div>
-              <% end %>
-            </div>
-            <div class="carousel-item">
-              <%= link_to content_path(@top_contents[1]) do %>
-              <div class="carousel-gradation"></div>
-              <%= image_tag @top_contents[1].image_url.to_s, class: "top-content-img" %>
-              <div class="container">
-                <div class="carousel-caption">
-                  <h2 class="top-contents"><%= @top_contents[1].name %></h2>
-                  <p class="genre-tag"><%= @top_contents[1].genre.name %></p>
-                  <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[1].created_at) %>前</small>
-                </div>
-              </div>
-              <% end %>
-            </div>
-            <div class="carousel-item">
-              <%= link_to content_path(@top_contents[0]) do %>
-              <div class="carousel-gradation"></div>
-              <%= image_tag @top_contents[0].image_url.to_s, class: "top-content-img" %>
-              <div class="container">
-                <div class="carousel-caption text-right">
-                  <h2 class="top-contents"><%= @top_contents[0].name %></h2>
-                  <p class="genre-tag"><%= @top_contents[0].genre.name %></p>
-                  <small class="top-content-time-ago"><i class="far fa-clock"></i><%= time_ago_in_words(@top_contents[0].created_at) %>前</small>
-                </div>
-              </div>
-              <% end %>
-            </div>
-            <!-- スライダーのコントロール -->
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">前へ</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">次へ</span>
-            </a>
-          </div>
-        </div>
-      </main>
-    </header>
-    <!-- サイドバー -->
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar text-center card">
-          <div class="sidebar-sticky mt-3 ">
-            <!-- ログイン中のユーザー情報 -->
-            <% if current_user %>
-            <%= render 'users/profile', user: @user %>
-            <% else %>
-            <% end %>
-          </div>
-          <!-- アマゾン広告 -->
-          <%= render 'layouts/amazon' %>
-        　</nav>
-
-        <div class="col-md-8">
-         <%- flash.each do |name, msg| -%>
-         <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-         <%- end -%>
-         <%= yield %>
-       </div>
-
-       <!--  いいね数に応じたランキング表示　-->
-       <nav class="col-md-2 d-none d-md-block bg-light sidebar card">
+      <!-- メインコンテンツ -->
+      <div class="col-md-8">
+        <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+        <%- end -%>
+        <%= yield %>
+      </div>
+      <!-- サイドバー右 -->
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar card">
         <div class="sidebar-sticky">
+          <!--  いいね数に応じたランキング表示　-->
           <h6 class= "pt-2 text-center"><i class="fas fa-crown"></i>人気記事<i class="fas fa-crown"></i></h6>
           <% @all_ranks.each do |content| %>
           <div class="ranking-box">
