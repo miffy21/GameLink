@@ -17,7 +17,7 @@ URL: http://gamelink.fun/
 ## 機能
 
 共通機能
-1. 記事投稿、削除、編集機能（gem 'Activ admin'）
+1. 記事投稿、削除、編集機能（gem 'Activ admin'）※管理者限定
 2. 画像投稿機能 (gem 'refile','carrierwave')
 3. ログイン機能 (gem 'devise')
 4. ナビ表示分岐機能 (if 条件分岐)
