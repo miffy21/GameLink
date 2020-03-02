@@ -1,3 +1,3 @@
 ActiveAdmin.register_page "Dashboard" do
-	menu false
+  menu false
 end

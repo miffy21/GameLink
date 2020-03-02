@@ -1,99 +1,99 @@
 <div class="container">
-    <div class="row m-2">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 card p-3 shadow-sm">
-                    <h4>会員情報</h4>
-                <table class="table table-bordered table-content">
-                    <tbody>
-                        <tr>
-                            <th class="info">名前</th>
-                            <td>
-                                <%= "#{@user.name}" %>
-                                <div style="float: right;"><%= render 'users/follow_form', user: @user %></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="info">ID</th>
-                            <td>
-                                <%= "#{@user.nickname}" %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="info">イメージ画像</th>
-                            <td>
-                                <%= attachment_image_tag @user, :profile_image, :fill, 150,150,fallback: "no_image.jpg",size:'150x150',id: "profile-image"%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="info">好きなジャンル</th>
-                            <td>
-                                <%= "#{@user.favorite_genre}" %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="info">好きなタイトル</th>
-                            <td>
-                                <%= "#{@user.being_played}" %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="info">自己紹介</th>
-                            <td>
-                                <%= "#{@user.profile}" %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="info">フォロー数</th>
-                            <td>
-                                <%= @user.following.count %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="info">フォロワー数</th>
-                            <td>
-                                <%= @user.followers.count %>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            <% if @user.id == current_user.id %>
-            <table class="table table-bordered table-content">
-                <tbody>
-                    <tr>
-                        <%= link_to edit_user_path(@user) do %>
-                        <i class="fas fa-user-edit m-1">プロフィール編集</i>
-                        <% end %>
-                    </tr>
-                    <tr>
-                        <%= link_to edit_registration_path(@user) do%>
-                        <i class="fas fa-user-cog m-1">パスワード変更・退会</i>
-                        <% end %>
-                    </tr>
-                </tbody>
-            </table>
+  <div class="row m-2">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 card p-3 shadow-sm">
+      <h4>会員情報</h4>
+      <table class="table table-bordered table-content">
+        <tbody>
+          <tr>
+            <th class="info">名前</th>
+            <td>
+              <%= "#{@user.name}" %>
+              <div style="float: right;"><%= render 'users/follow_form', user: @user %></div>
+            </td>
+          </tr>
+          <tr>
+            <th class="info">ID</th>
+            <td>
+              <%= "#{@user.nickname}" %>
+            </td>
+          </tr>
+          <tr>
+            <th class="info">イメージ画像</th>
+            <td>
+              <%= attachment_image_tag @user, :profile_image, :fill, 150,150,fallback: "no_image.jpg",size:'150x150',id: "profile-image"%>
+            </td>
+          </tr>
+          <tr>
+            <th class="info">好きなジャンル</th>
+            <td>
+              <%= "#{@user.favorite_genre}" %>
+            </td>
+          </tr>
+          <tr>
+            <th class="info">好きなタイトル</th>
+            <td>
+              <%= "#{@user.being_played}" %>
+            </td>
+          </tr>
+          <tr>
+            <th class="info">自己紹介</th>
+            <td>
+              <%= "#{@user.profile}" %>
+            </td>
+          </tr>
+          <tr>
+            <th class="info">フォロー数</th>
+            <td>
+              <%= @user.following.count %>
+            </td>
+          </tr>
+          <tr>
+            <th class="info">フォロワー数</th>
+            <td>
+              <%= @user.followers.count %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @user.id == current_user.id %>
+      <table class="table table-bordered table-content">
+        <tbody>
+          <tr>
+            <%= link_to edit_user_path(@user) do %>
+            <i class="fas fa-user-edit m-1">プロフィール編集</i>
             <% end %>
-        </div>
+          </tr>
+          <tr>
+            <%= link_to edit_registration_path(@user) do%>
+            <i class="fas fa-user-cog m-1">パスワード変更・退会</i>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
     </div>
+  </div>
 </div>
-    <div class="card-body shadow-sm">
-        <h5 class="card-title"><%= @user.name %>さんが「<i class="fas fa-heart"></i>いいね！」した記事一覧</h5>
-        <div class="row">
-            <% @favorite_content.each do |content| %>
-            <%= link_to content_path(content) do %>
-            <div class="col-md-4">
-                <div class="card h-10 mb-4 shadow-sm">
-                    <%= image_tag content.image_url.to_s, class: "favo-content-img" %>
-                    <p class="fav-genre-tag"><%= content.genre.name %></p>
-                    <div class="card-body">
-                        <h3 class="card-text favo-content-name"><%= content.name %></h3>
-                        <% end %>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted"><i class="far fa-clock"></i><%= time_ago_in_words(content.created_at) %>前</small>
-                            <small class="text-muted" style="position: absolute; right: 40; bottom:10;"><i class="far fa-comment"></i>コメント数:<%= content.comments.count %>件</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% end %>
+<div class="card-body shadow-sm">
+  <h5 class="card-title"><%= @user.name %>さんが「<i class="fas fa-heart"></i>いいね！」した記事一覧</h5>
+  <div class="row">
+    <% @favorite_content.each do |content| %>
+    <%= link_to content_path(content) do %>
+    <div class="col-md-4">
+      <div class="card h-10 mb-4 shadow-sm">
+        <%= image_tag content.image_url.to_s, class: "favo-content-img" %>
+        <p class="fav-genre-tag"><%= content.genre.name %></p>
+        <div class="card-body">
+          <h3 class="card-text favo-content-name"><%= content.name %></h3>
+          <% end %>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted"><i class="far fa-clock"></i><%= time_ago_in_words(content.created_at) %>前</small>
+            <small class="text-muted" style="position: absolute; right: 40; bottom:10;"><i class="far fa-comment"></i>コメント数:<%= content.comments.count %>件</small>
+          </div>
         </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>

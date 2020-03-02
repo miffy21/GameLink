@@ -24,6 +24,12 @@ h4 {
   text-align: center;
 }
 
+footer {
+  text-align: center;
+  color: #ffffff;
+  background-color: #343a40;
+}
+
 .font-bold {
  font-weight: bold;
 }
@@ -117,7 +123,7 @@ h4 {
 }
 
 .fa-crown {
-  color:#ffd700;
+  color: #ffd700;
 }
 
 .ranking-box {
@@ -163,12 +169,6 @@ h4 {
   left: 10;
 }
 
-footer {
-  text-align: center;
-  color: #ffffff; 
-  background-color: #343a40;
-}
-
 .footer-logo {
   height: 30px;
 }
@@ -197,13 +197,12 @@ footer {
   margin: 0 auto;
 }
 
-
 .fav-genre-tag {
   font-size: 110%;
   background: rgba(255, 0, 0, .7); 
-  color: white; 
+  color: white;
   position: absolute; 
-  top :90; 
+  top: 90;
   left: 10;
 }
 
